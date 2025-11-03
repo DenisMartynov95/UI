@@ -13,7 +13,7 @@ public class SignUpPage {
                    Блок локаторов
                                           */
 
-    // Для ассертов
+    // Для ассерта проверки открывшейся страницы
     private  final By assert_SignUpHeader = By.xpath("/html/body/div[1]/div[2]/h2");
 
     // Инпуты

@@ -2,10 +2,16 @@ package PageObjects.LoginPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginPage {
     private final WebDriver driver;
     public LoginPage(WebDriver driver) { this.driver = driver; }
+
 
 
 
@@ -14,7 +20,7 @@ public class LoginPage {
                                      */
 
 
-    // Для ассертов
+    // Для ассерта проверки открывшейся страницы
     private  final  By assert_LogInHeader = By.xpath("/html/body/div[1]/div[1]/div/h1");
 
     // Инпуты
@@ -38,16 +44,25 @@ public class LoginPage {
                                                  */
 
 
-    // Тест №1 Регистрация
+    // Тест №1 Регистрация (продолжение - корень в MainPAgeSI)
     public SignUpPage registrationAccount() {
         try {
-            driver.findElement(btn_goToSignUp);
-            Thread.sleep(500);
-            return new SignUpPage(driver);
-        } catch (Exception e) {
+            // Сначала дождусь открытия страницы для этого сверюсь с локатором
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            boolean isCorrect = wait.until(ExpectedConditions.textToBe(assert_LogInHeader,"Log in"));
+                    if (isCorrect) {
+                        // Тест пройдет дальше если проверка была успешной
+                        driver.findElement(btn_goToSignUp);
+                        return new SignUpPage(driver);
+                    }
+
+
+
+            } catch (Exception e) {
             driver.findElement(assert_LogInHeader).getText();
             throw new RuntimeException("Ошибка при создании аккаунта", e);
         }
+
 
     }
 
