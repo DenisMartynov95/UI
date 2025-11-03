@@ -10,22 +10,32 @@ public class SignUpPage {
 
 
         /*
-            Блок локаторов
-                                     */
+                   Блок локаторов
+                                          */
 
     // Для ассертов
-    private  final By assert_SignUpHeader = By.xpath("/html/body/div[1]/div[1]/div/h1");
+    private  final By assert_SignUpHeader = By.xpath("/html/body/div[1]/div[2]/h2");
 
     // Инпуты
-    private final By input_email = By.id("si-mail");
-    private final By input_password = By.id("si-passwd");
+    private final By input_username = By.id("/html/body/div[1]/div[2]/form/div[2]/fieldset/div[1]/div/div[@class = 'input-pre input-name']/input");
+    private final By input_email = By.id("MailReg");
+    private final By input_password = By.id("si-passwd2");
     private final By input_searchProgram = By.id("search_inp");
 
     // Кнопочки
-    private final By btn_goToSignUp = By.xpath("/html/body/div[1]/div[1]/div/form/div[@class = 'wrap_form']/div[@class = 'sign-up__wrapper']/a");
-    private final By btn_login = By.id("login");
-    private final By btn_forgotPassword = By.xpath("/html/body/div[1]/div[1]/div/form/div[2]/div[3]/fieldset/div[3]/div[@class = 'login-input-wrap']/div[@class = 'input-pre clearfix']/span[@class = 'forgot']");
-    private final By btn_showPassword = By.xpath("/html/body/div[1]/div[1]/div/form/div[2]/div[3]/fieldset/div[2]/div/div/span[@class = 'password-eye hide']");
+    private final By btn_goToLogin = By.xpath("/html/body/div[1]/div[2]/div[@class = 'log-in__wrapper']/a");
+    private final By btn_signUp = By.id("login3");
+    private final By btn_acceptCapcha = By.xpath("/html/body/div[2]/div[3]/div[1]/div/div/span/div[1]");
+    private final By btn_showPassword = By.xpath(".//div[2]/fieldset/div[3]/div/div/span[@class = 'password-eye hide']");
+
+
+
+
+
+
+            /*
+                         Блок методов
+                                                 */
 
 
 

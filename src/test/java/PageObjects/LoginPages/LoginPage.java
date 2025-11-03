@@ -33,5 +33,25 @@ public class LoginPage {
 
 
 
+            /*
+                          Блок методов
+                                                 */
+
+
+    // Тест №1 Регистрация
+    public SignUpPage registrationAccount() {
+        try {
+            driver.findElement(btn_goToSignUp);
+            Thread.sleep(500);
+            return new SignUpPage(driver);
+        } catch (Exception e) {
+            driver.findElement(assert_LogInHeader).getText();
+            throw new RuntimeException("Ошибка при создании аккаунта", e);
+        }
+
+    }
+
+
+
 
 }
