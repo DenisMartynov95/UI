@@ -31,19 +31,11 @@ public class MainPageSI {
     // Тест №1 Регистрация (продолжение - корень в MainPAgeSI)
     // MainPageSI > LoginPage > SignUpPage > MainPageSI
     public LoginPage registrationAccount() {
-        try {
-            driver.findElement(btn_goToLogInPage).click();
-            return new LoginPage(driver);
+        driver.get(si_mainPage);
+        driver.findElement(btn_goToLogInPage).click();
+        return new LoginPage(driver);
 
-        } catch (Exception e) {
-            driver.findElement(assert_MainSIHeader).getText();
-            throw new RuntimeException("Ошибка при создании аккаунта", e);
-        }
     }
-
-
-
-
 
 
 }

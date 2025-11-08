@@ -46,25 +46,22 @@ public class SignUpPage {
     // MainPageSI > LoginPage > SignUpPage >
 
     public MainPageSI registrationAccount() {
-        try {
-            // Сначала дождусь открытия страницы для этого сверюсь с локатором
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            boolean isCorrect = wait.until(ExpectedConditions.textToBe(assert_SignUpHeader,"Sign up"));
-            // Тест пройдет дальше если проверка была успешной
+        // Сначала дождусь открытия страницы для этого сверюсь с локатором
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        boolean isCorrect = wait.until(ExpectedConditions.textToBePresentInElementLocated(assert_SignUpHeader,"Sign up"));
+        // Тест пройдет дальше если проверка была успешной
                 if (isCorrect) {
                         driver.findElement(input_username).sendKeys("test");
                         driver.findElement(input_email).sendKeys("test@mail.ru");
                         driver.findElement(input_password).sendKeys("Usad123");
                         driver.findElement(btn_acceptCapcha);
-                        Thread.sleep(3000);
-                        driver.findElement(btn_signUp);
-                    }
-            return new MainPageSI(driver);
+                        WebDriverWait wait1 = new WebDriverWait(driver,Duration.ofSeconds(3));
+                        wait1.until(ExpectedConditions.visibilityOfElementLocated(btn_signUp));
+                    driver.findElement(btn_signUp);
+                    return new MainPageSI(driver);
+                }
+        return new MainPageSI(driver);
 
-        } catch (Exception e) {
-            driver.findElement(assert_SignUpHeader).getText();
-            throw new RuntimeException("Держи хеддер страницы которая открыта: " + assert_SignUpHeader.toString());
-        }
     }
 
 

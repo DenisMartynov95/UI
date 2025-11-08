@@ -53,23 +53,14 @@ public class LoginPage {
     // MainPageSI > LoginPage  >
 
     public SignUpPage registrationAccount() {
-        try {
-            // Сначала дождусь открытия страницы для этого сверюсь с локатором
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            boolean isCorrect = wait.until(ExpectedConditions.textToBe(assert_LogInHeader, "Log in"));
-            if (isCorrect) {
-                // Тест пройдет дальше если проверка была успешной
-                driver.findElement(btn_goToSignUp);
-            }
+        // Сначала дождусь открытия страницы для этого сверюсь с локатором
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        boolean isCorrect = wait.until(ExpectedConditions.textToBePresentInElementLocated(assert_LogInHeader, "Log in"));
+        if (isCorrect) {
+            // Тест пройдет дальше если проверка была успешной
+            driver.findElement(btn_goToSignUp);
             return new SignUpPage(driver);
-            // Или выброшу сообщение, что страница не та
-        } catch (Exception e) {
-            driver.findElement(assert_LogInHeader).getText();
-            throw new RuntimeException("Держи хеддер страницы которая открыта: " + assert_LogInHeader.toString());
         }
+        return new SignUpPage(driver);
     }
-
-
-
-
 }

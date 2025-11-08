@@ -8,7 +8,8 @@ public class TestClass extends LaunchBrowsers {
     public void smoke_registrationAccount() {
         MainPageSI success = new MainPageSI(driver)
                 .registrationAccount()
-                .registrationAccount().registrationAccount();
+                .registrationAccount()
+                .registrationAccount();
 
     }
 
