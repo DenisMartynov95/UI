@@ -10,7 +10,10 @@ import java.time.Duration;
 
 public class LoginPage {
     private final WebDriver driver;
-    public LoginPage(WebDriver driver) { this.driver = driver; }
+
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
 
 
@@ -21,7 +24,9 @@ public class LoginPage {
 
 
     // Для ассерта проверки открывшейся страницы
-    private  final  By assert_LogInHeader = By.xpath("/html/body/div[1]/div[1]/div/h1");
+    private final By assert_LogInHeader = By.xpath("/html/body/div[1]/div[1]/div/h1");
+    // Для ассерта - проверка на то, что профиль появился после регистрации
+
 
     // Инпуты
     private final By input_email = By.id("si-mail");
@@ -45,25 +50,23 @@ public class LoginPage {
 
 
     // Тест №1 Регистрация (продолжение - корень в MainPAgeSI)
+    // MainPageSI > LoginPage  >
+
     public SignUpPage registrationAccount() {
         try {
             // Сначала дождусь открытия страницы для этого сверюсь с локатором
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            boolean isCorrect = wait.until(ExpectedConditions.textToBe(assert_LogInHeader,"Log in"));
-                    if (isCorrect) {
-                        // Тест пройдет дальше если проверка была успешной
-                        driver.findElement(btn_goToSignUp);
-                        return new SignUpPage(driver);
-                    }
-
-
-
-            } catch (Exception e) {
+            boolean isCorrect = wait.until(ExpectedConditions.textToBe(assert_LogInHeader, "Log in"));
+            if (isCorrect) {
+                // Тест пройдет дальше если проверка была успешной
+                driver.findElement(btn_goToSignUp);
+            }
+            return new SignUpPage(driver);
+            // Или выброшу сообщение, что страница не та
+        } catch (Exception e) {
             driver.findElement(assert_LogInHeader).getText();
-            throw new RuntimeException("Ошибка при создании аккаунта", e);
+            throw new RuntimeException("Держи хеддер страницы которая открыта: " + assert_LogInHeader.toString());
         }
-
-
     }
 
 

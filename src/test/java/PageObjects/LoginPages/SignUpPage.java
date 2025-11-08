@@ -1,7 +1,12 @@
 package PageObjects.LoginPages;
 
+import PageObjects.MI.MainPageSI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class SignUpPage {
     private final WebDriver driver;
@@ -37,8 +42,30 @@ public class SignUpPage {
                          Блок методов
                                                  */
 
+    // Тест №1 Регистрация (продолжение - корень в MainPAgeSI)
+    // MainPageSI > LoginPage > SignUpPage >
 
+    public MainPageSI registrationAccount() {
+        try {
+            // Сначала дождусь открытия страницы для этого сверюсь с локатором
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            boolean isCorrect = wait.until(ExpectedConditions.textToBe(assert_SignUpHeader,"Sign up"));
+            // Тест пройдет дальше если проверка была успешной
+                if (isCorrect) {
+                        driver.findElement(input_username).sendKeys("test");
+                        driver.findElement(input_email).sendKeys("test@mail.ru");
+                        driver.findElement(input_password).sendKeys("Usad123");
+                        driver.findElement(btn_acceptCapcha);
+                        Thread.sleep(3000);
+                        driver.findElement(btn_signUp);
+                    }
+            return new MainPageSI(driver);
 
+        } catch (Exception e) {
+            driver.findElement(assert_SignUpHeader).getText();
+            throw new RuntimeException("Держи хеддер страницы которая открыта: " + assert_SignUpHeader.toString());
+        }
+    }
 
 
 }
