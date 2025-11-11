@@ -20,6 +20,8 @@ public class SignUpPage {
 
     // Для ассерта проверки открывшейся страницы
     private  final By assert_SignUpHeader = By.xpath("/html/body/div[1]/div[2]/h2");
+    // Для ассерта, при открытии формы авторизации - анимация лоадера, надо дождаться display : none
+    private final By assert_loaderAnimation = By.xpath("/html/body/div[1]/div[1]/img");
 
     // Инпуты
     private final By input_username = By.id("/html/body/div[1]/div[2]/form/div[2]/fieldset/div[1]/div/div[@class = 'input-pre input-name']/input");
@@ -48,18 +50,15 @@ public class SignUpPage {
     public MainPageSI registrationAccount() {
         // Сначала дождусь открытия страницы для этого сверюсь с локатором
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        boolean isCorrect = wait.until(ExpectedConditions.textToBePresentInElementLocated(assert_SignUpHeader,"Sign up"));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(assert_loaderAnimation));
         // Тест пройдет дальше если проверка была успешной
-                if (isCorrect) {
-                        driver.findElement(input_username).sendKeys("test");
-                        driver.findElement(input_email).sendKeys("test@mail.ru");
-                        driver.findElement(input_password).sendKeys("Usad123");
-                        driver.findElement(btn_acceptCapcha);
-                        WebDriverWait wait1 = new WebDriverWait(driver,Duration.ofSeconds(3));
-                        wait1.until(ExpectedConditions.visibilityOfElementLocated(btn_signUp));
-                    driver.findElement(btn_signUp);
-                    return new MainPageSI(driver);
-                }
+        driver.findElement(input_username).sendKeys("test");
+        driver.findElement(input_email).sendKeys("test@mail.ru");
+        driver.findElement(input_password).sendKeys("Usad123");
+        driver.findElement(btn_acceptCapcha);
+        WebDriverWait wait1 = new WebDriverWait(driver,Duration.ofSeconds(3));
+        wait1.until(ExpectedConditions.visibilityOfElementLocated(btn_signUp));
+        driver.findElement(btn_signUp);
         return new MainPageSI(driver);
 
     }

@@ -25,7 +25,9 @@ public class LoginPage {
 
     // Для ассерта проверки открывшейся страницы
     private final By assert_LogInHeader = By.xpath("/html/body/div[1]/div[1]/div/h1");
-    // Для ассерта - проверка на то, что профиль появился после регистрации
+    // Для ассерта, при открытии формы авторизации - анимация лоадера, надо дождаться display : none
+    private final By assert_loaderAnimation = By.xpath("/html/body/div[1]/div[1]/img");
+
 
 
     // Инпуты
@@ -55,12 +57,9 @@ public class LoginPage {
     public SignUpPage registrationAccount() {
         // Сначала дождусь открытия страницы для этого сверюсь с локатором
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        boolean isCorrect = wait.until(ExpectedConditions.textToBePresentInElementLocated(assert_LogInHeader, "Log in"));
-        if (isCorrect) {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(assert_loaderAnimation));
             // Тест пройдет дальше если проверка была успешной
-            driver.findElement(btn_goToSignUp);
-            return new SignUpPage(driver);
-        }
+        driver.findElement(btn_goToSignUp);
         return new SignUpPage(driver);
-    }
+        }
 }
