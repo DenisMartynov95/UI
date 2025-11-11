@@ -1,4 +1,4 @@
-import PageObjects.MI.MainPageSI;
+import PageObjects.SI.MainPageSI;
 import WebSettings.LaunchBrowsers;
 import org.testng.annotations.Test;
 

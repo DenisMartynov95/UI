@@ -1,6 +1,6 @@
 package PageObjects.LoginPages;
 
-import PageObjects.MI.MainPageSI;
+import PageObjects.SI.MainPageSI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,6 +11,7 @@ import java.time.Duration;
 public class SignUpPage {
     private final WebDriver driver;
     public SignUpPage(WebDriver driver) { this.driver = driver; }
+
 
 
 
@@ -50,7 +51,7 @@ public class SignUpPage {
     public MainPageSI registrationAccount() {
         // Сначала дождусь открытия страницы для этого сверюсь с локатором
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(assert_loaderAnimation));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(input_username));
         // Тест пройдет дальше если проверка была успешной
         driver.findElement(input_username).sendKeys("test");
         driver.findElement(input_email).sendKeys("test@mail.ru");

@@ -36,7 +36,7 @@ public class LoginPage {
     private final By input_searchProgram = By.id("search_inp");
 
     // Кнопочки
-    private final By btn_goToSignUp = By.xpath("/html/body/div[1]/div[1]/div/form/div[@class = 'wrap_form']/div[@class = 'sign-up__wrapper']/a");
+    private final By btn_goToSignUp = By.xpath(".//div/form/div[@class = 'wrap_form']/div[@class = 'sign-up__wrapper']/a");
     private final By btn_login = By.id("login");
     private final By btn_forgotPassword = By.xpath("/html/body/div[1]/div[1]/div/form/div[2]/div[3]/fieldset/div[3]/div[@class = 'login-input-wrap']/div[@class = 'input-pre clearfix']/span[@class = 'forgot']");
     private final By btn_showPassword = By.xpath("/html/body/div[1]/div[1]/div/form/div[2]/div[3]/fieldset/div[2]/div/div/span[@class = 'password-eye hide']");
@@ -57,8 +57,8 @@ public class LoginPage {
     public SignUpPage registrationAccount() {
         // Сначала дождусь открытия страницы для этого сверюсь с локатором
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(assert_loaderAnimation));
-            // Тест пройдет дальше если проверка была успешной
+        wait.until(ExpectedConditions.elementToBeClickable(btn_goToSignUp));
+        // Тест пройдет дальше если проверка была успешной
         driver.findElement(btn_goToSignUp);
         return new SignUpPage(driver);
         }

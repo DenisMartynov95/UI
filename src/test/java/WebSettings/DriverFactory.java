@@ -38,6 +38,12 @@ public class DriverFactory {
         cOpts.addArguments("--disable-notifications");
         cOpts.addArguments("--disable-infobars");
         cOpts.addArguments("--start-maximized");
+        cOpts.addArguments("--disable-dev-shm-usage");
+        cOpts.addArguments("--disable-features=NetworkServiceInProcess");
+        cOpts.addArguments("--disable-background-networking");
+        cOpts.addArguments("--disable-client-side-phishing-detection");
+        cOpts.addArguments("--no-first-run");
+
 
         if (headless) cOpts.addArguments("--headless=new");
 

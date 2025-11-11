@@ -1,4 +1,4 @@
-package PageObjects.MI;
+package PageObjects.SI;
 
 import PageObjects.LoginPages.LoginPage;
 import org.openqa.selenium.By;
@@ -34,8 +34,8 @@ public class MainPageSI {
         driver.get(si_mainPage);
         driver.findElement(btn_goToLogInPage).click();
         return new LoginPage(driver);
-
     }
+//    public boolean check
 
 
 }
