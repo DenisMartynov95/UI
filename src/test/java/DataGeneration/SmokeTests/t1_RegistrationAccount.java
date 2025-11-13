@@ -10,8 +10,8 @@ public class t1_RegistrationAccount {
 
 
     public static String username_generation = RandomStringUtils.randomAlphabetic(4);
-    public static String email_generation = RandomStringUtils.randomAlphabetic(4) + "@mail.com";
-    public static String password_generation = RandomStringUtils.randomAlphabetic(4) + "!A1";
+    public static String email_generation = RandomStringUtils.randomAlphabetic(5) + "@mail.com";
+    public static String password_generation = RandomStringUtils.randomAlphabetic(5) + "!A1";
 
 
 
