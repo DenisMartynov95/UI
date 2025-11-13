@@ -54,8 +54,13 @@ public class SignUpPage {
     // MainPageSI > LoginPage > SignUpPage >
 
     public MainPageSI registrationAccount() {
+        System.out.println("Сгенерирован username: " + username_generation);
         driver.findElement(input_username).sendKeys(username_generation);
+
+        System.out.println("Сгенерирован email: " + username_generation);
         driver.findElement(input_email).sendKeys(email_generation);
+
+        System.out.println("Сгенерирован password: " + username_generation);
         driver.findElement(input_password).sendKeys(password_generation);
 
         // Пытаемся найти капчу
