@@ -7,9 +7,10 @@ import java.util.Random;
 public class smoke1_RegistrationAccount {
 
     Random random = new Random();
-    String generationString = RandomStringUtils.randomAlphabetic(10);
 
-
+    public static String username_generation = RandomStringUtils.randomAlphabetic(4);
+    public static String email_generation = RandomStringUtils.randomAlphabetic(4) + "@mail.com";
+    public static String password_generation = RandomStringUtils.randomAlphabetic(4) + "!A1";
 
 
 

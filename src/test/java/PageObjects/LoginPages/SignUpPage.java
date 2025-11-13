@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static DataGeneration.smoke1_RegistrationAccount.*;
+
 public class SignUpPage {
     private final WebDriver driver;
 
@@ -52,9 +54,9 @@ public class SignUpPage {
     // MainPageSI > LoginPage > SignUpPage >
 
     public MainPageSI registrationAccount() {
-        driver.findElement(input_username).sendKeys("test");
-        driver.findElement(input_email).sendKeys("test@mail.ru");
-        driver.findElement(input_password).sendKeys("Usad123");
+        driver.findElement(input_username).sendKeys(username_generation);
+        driver.findElement(input_email).sendKeys(email_generation);
+        driver.findElement(input_password).sendKeys(password_generation);
 
         // Пытаемся найти капчу
         WebDriverWait waitCapcha = new WebDriverWait(driver, Duration.ofSeconds(2));
