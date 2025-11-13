@@ -5,8 +5,8 @@ import PageObjects.ProfilePages.ProfilePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static Other.ColorfulConsole.YELLOW;
 import static DataGeneration.SmokeTests.t1_RegistrationAccount.*;
+import static Other.ColorfulConsole.*;
 
 public class MainPageSI {
 
@@ -45,10 +45,17 @@ public class MainPageSI {
         try {
             String result = driver.findElement(profileUsername).getText();
             if (result.equals(username_generation)) {
-                System.out.println(YELLOW);
+                System.out.println(YELLOW + "Промежуточный Ожидаемый результат ВЫПОЛНЕН!" + RESET);
+                System.out.println(YELLOW + "Введенный username: " + RESET + BLUE + username_generation + RESET + " найденный username: " + RESET + BLUE + result + RESET);
             }
 
+        } catch (Exception e) {
+            System.out.println(RED +"Промежуточный ожидаемый результат ПРОВАЛИЛСЯ!" + RESET);
         }
+
+        // Далее прохожу по тесту на новую страницу
+        driver.findElement(btn_openProfileMenu).click();
+        return new  ProfilePage(driver);
 
     }
 
