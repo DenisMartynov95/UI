@@ -10,7 +10,10 @@ import java.time.Duration;
 
 public class SignUpPage {
     private final WebDriver driver;
-    public SignUpPage(WebDriver driver) { this.driver = driver; }
+
+    public SignUpPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
 
 
@@ -20,12 +23,12 @@ public class SignUpPage {
                                           */
 
     // Для ассерта проверки открывшейся страницы
-    private  final By assert_SignUpHeader = By.xpath("/html/body/div[1]/div[2]/h2");
+    private final By assert_SignUpHeader = By.xpath("/html/body/div[1]/div[2]/h2");
     // Для ассерта, при открытии формы авторизации - анимация лоадера, надо дождаться display : none
     private final By assert_loaderAnimation = By.xpath("/html/body/div[1]/div[1]/img");
 
     // Инпуты
-    private final By input_username = By.id("/html/body/div[1]/div[2]/form/div[2]/fieldset/div[1]/div/div[@class = 'input-pre input-name']/input");
+    private final By input_username = By.xpath("/html/body/div[1]/div[2]/form/div[2]/fieldset/div[1]/div/div[@class = 'input-pre input-name']/input");
     private final By input_email = By.id("MailReg");
     private final By input_password = By.id("si-passwd2");
     private final By input_searchProgram = By.id("search_inp");
@@ -50,19 +53,26 @@ public class SignUpPage {
 
     public MainPageSI registrationAccount() {
         // Сначала дождусь открытия страницы для этого сверюсь с локатором
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(input_username));
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        wait.until(ExpectedConditions.elementToBeClickable(input_username));
         // Тест пройдет дальше если проверка была успешной
         driver.findElement(input_username).sendKeys("test");
         driver.findElement(input_email).sendKeys("test@mail.ru");
         driver.findElement(input_password).sendKeys("Usad123");
-        driver.findElement(btn_acceptCapcha);
-        WebDriverWait wait1 = new WebDriverWait(driver,Duration.ofSeconds(3));
-        wait1.until(ExpectedConditions.visibilityOfElementLocated(btn_signUp));
-        driver.findElement(btn_signUp);
-        return new MainPageSI(driver);
 
+        if (driver.findElement(btn_acceptCapcha).isDisplayed()) {
+            driver.findElement(btn_acceptCapcha).click();
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            driver.findElement(btn_signUp).click();
+            return new MainPageSI(driver);
+        } else {
+            driver.findElement(btn_signUp).click();
+            return new MainPageSI(driver);
+
+        }
     }
-
-
 }

@@ -59,7 +59,7 @@ public class LoginPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(btn_goToSignUp));
         // Тест пройдет дальше если проверка была успешной
-        driver.findElement(btn_goToSignUp);
+        driver.findElement(btn_goToSignUp).click();
         return new SignUpPage(driver);
         }
 }
