@@ -1,6 +1,7 @@
 package PageObjects.SI;
 
 import PageObjects.LoginPages.LoginPage;
+import PageObjects.ProfilePages.ProfilePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -16,13 +17,9 @@ public class MainPageSI {
                   Блок локаторов
                                       */
 
-    // Для ассерта проверки открывшейся страницы
-    private  final By assert_MainSIHeader = By.xpath("/html/body/div[1]/div/div[3]/div[1]/h1");
-
-
     // Кнопочки
     private final By btn_goToLogInPage = By.xpath("/html/body/header/div[1]/div/div[4]/div[3]/a");
-
+    private final By btn_openProfileMenu = By.xpath(".//div[1]/div/div[4]/div[3]/div/a[1]/img");
 
         /*
                 Блок методов
@@ -35,7 +32,10 @@ public class MainPageSI {
         driver.findElement(btn_goToLogInPage).click();
         return new LoginPage(driver);
     }
-//    public boolean check
 
+    public ProfilePage checkAccount() {
+        driver.findElement(btn_openProfileMenu).click();
+
+    }
 
 }

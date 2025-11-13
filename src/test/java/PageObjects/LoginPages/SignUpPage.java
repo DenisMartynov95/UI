@@ -52,10 +52,6 @@ public class SignUpPage {
     // MainPageSI > LoginPage > SignUpPage >
 
     public MainPageSI registrationAccount() {
-        // Сначала дождусь открытия страницы для этого сверюсь с локатором
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        wait.until(ExpectedConditions.elementToBeClickable(input_username));
-        // Тест пройдет дальше если проверка была успешной
         driver.findElement(input_username).sendKeys("test");
         driver.findElement(input_email).sendKeys("test@mail.ru");
         driver.findElement(input_password).sendKeys("Usad123");
@@ -68,7 +64,9 @@ public class SignUpPage {
         } catch (Exception ignored) {
             System.out.println("Капча не появилась — продолжаем регистрацию без неё");
         }
+
         // Ждём кнопку SignUp
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(btn_signUp));
         driver.findElement(btn_signUp).click();
 
