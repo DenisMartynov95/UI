@@ -1,10 +1,10 @@
-package DataGeneration;
+package DataGeneration.SmokeTests;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.Random;
 
-public class smoke1_RegistrationAccount {
+public class t1_RegistrationAccount {
 
     Random random = new Random();
 

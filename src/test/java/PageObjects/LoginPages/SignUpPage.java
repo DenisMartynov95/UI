@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static DataGeneration.smoke1_RegistrationAccount.*;
+import static DataGeneration.SmokeTests.t1_RegistrationAccount.*;
 
 public class SignUpPage {
     private final WebDriver driver;

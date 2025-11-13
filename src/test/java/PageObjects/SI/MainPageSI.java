@@ -5,6 +5,9 @@ import PageObjects.ProfilePages.ProfilePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static Other.ColorfulConsole.YELLOW;
+import static DataGeneration.SmokeTests.t1_RegistrationAccount.*;
+
 public class MainPageSI {
 
     private final WebDriver driver;
@@ -16,6 +19,9 @@ public class MainPageSI {
         /*
                   Блок локаторов
                                       */
+
+    private final By profileUsername = By.xpath("/html/body/header/div[1]/div/div[4]/div[3]/div/div/a[@class = 'user_name']");
+
 
     // Кнопочки
     private final By btn_goToLogInPage = By.xpath("/html/body/header/div[1]/div/div[4]/div[3]/a");
@@ -35,6 +41,14 @@ public class MainPageSI {
 
     public ProfilePage checkAccount() {
         driver.findElement(btn_openProfileMenu).click();
+
+        try {
+            String result = driver.findElement(profileUsername).getText();
+            if (result.equals(username_generation)) {
+                System.out.println(YELLOW);
+            }
+
+        }
 
     }
 
