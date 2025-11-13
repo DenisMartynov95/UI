@@ -53,26 +53,27 @@ public class SignUpPage {
 
     public MainPageSI registrationAccount() {
         // Сначала дождусь открытия страницы для этого сверюсь с локатором
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 //        wait.until(ExpectedConditions.elementToBeClickable(input_username));
         // Тест пройдет дальше если проверка была успешной
         driver.findElement(input_username).sendKeys("test");
         driver.findElement(input_email).sendKeys("test@mail.ru");
         driver.findElement(input_password).sendKeys("Usad123");
 
-        if (driver.findElement(btn_acceptCapcha).isDisplayed()) {
+        // Пытаемся найти капчу
+        WebDriverWait waitCapcha = new WebDriverWait(driver, Duration.ofSeconds(2));
+        try {
+            waitCapcha.until(ExpectedConditions.elementToBeClickable(btn_acceptCapcha));
             driver.findElement(btn_acceptCapcha).click();
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            driver.findElement(btn_signUp).click();
-            return new MainPageSI(driver);
-        } else {
-            driver.findElement(btn_signUp).click();
-            return new MainPageSI(driver);
-
+        } catch (Exception ignored) {
+            System.out.println("Капча не появилась — продолжаем регистрацию без неё");
         }
+        // Ждём кнопку SignUp
+        wait.until(ExpectedConditions.elementToBeClickable(btn_signUp));
+        driver.findElement(btn_signUp).click();
+
+        return new MainPageSI(driver);
+
+
     }
 }
