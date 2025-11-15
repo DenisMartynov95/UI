@@ -1,5 +1,6 @@
 package PageObjects.LoginPages;
 
+import PageObjects.SI.MainPageSI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
+import static Other.ColorfulConsole.BLUE;
 
 public class LoginPage {
     private final WebDriver driver;
@@ -62,4 +65,18 @@ public class LoginPage {
         driver.findElement(btn_goToSignUp).click();
         return new SignUpPage(driver);
         }
+
+
+
+    public MainPageSI authorization() {
+        try {
+            driver.findElement(input_email).sendKeys("martynov.averyan@yandex.ru");
+            System.out.println("Введен почтовый адрес: " + BLUE + " martynov.averyan@yandex.ru");
+
+            driver.findElement(input_password).sendKeys("Qwerty!1");
+            System.out.println("Введен пароль: " + BLUE + " Qwerty!1");
+
+        }
+        return new MainPageSI(driver);
+    }
 }

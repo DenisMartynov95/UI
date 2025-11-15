@@ -31,8 +31,8 @@ public class MainPageSI {
                 Блок методов
                                      */
 
-    // Тест №1 Регистрация (продолжение - корень в MainPAgeSI)
-    // MainPageSI > LoginPage > SignUpPage > MainPageSI
+    // Тест №1 Регистрация и авторизация e2e
+    // MainPageSI > LoginPage > SignUpPage > MainPageSI > ProfilePage
     public LoginPage registrationAccount() {
         driver.get(si_mainPage);
         driver.findElement(btn_goToLogInPage).click();
@@ -58,5 +58,18 @@ public class MainPageSI {
         return new  ProfilePage(driver);
 
     }
+
+
+    // Тест №2 Авторизация
+    // Имеется тестовый аккаунт >>> email - martynov.averyan@yandex.ru = password - Qwerty!1
+    // MainPageSI > LoginPage  > MainPageSI
+
+    public LoginPage authorization() {
+        driver.findElement(btn_goToLogInPage).click();
+        return new LoginPage(driver);
+    }
+
+
+
 
 }
