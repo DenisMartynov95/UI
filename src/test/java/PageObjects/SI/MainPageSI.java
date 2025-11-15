@@ -69,6 +69,20 @@ public class MainPageSI {
         return new LoginPage(driver);
     }
 
+    public ProfilePage checkAuthorization() {
+        try {
+            driver.findElement(btn_openProfileMenu).click();
+            String username = driver.findElement(profileUsername).getText();
+            if (username != null) {
+                System.out.println("Найден username: " + BLUE + username + RESET);
+                driver.findElement(profileUsername).click();
+                return new ProfilePage(driver);
+            }
+        } catch (Exception e) {
+            System.out.println(RED + "Username или ProfileMenu не были обнаружены! Авторизация провалилась" + RESET);
+        }
+    }
+
 
 
 

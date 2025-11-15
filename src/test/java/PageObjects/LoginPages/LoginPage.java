@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static Other.ColorfulConsole.BLUE;
+import static Other.ColorfulConsole.*;
 
 public class LoginPage {
     private final WebDriver driver;
@@ -71,11 +71,15 @@ public class LoginPage {
     public MainPageSI authorization() {
         try {
             driver.findElement(input_email).sendKeys("martynov.averyan@yandex.ru");
-            System.out.println("Введен почтовый адрес: " + BLUE + " martynov.averyan@yandex.ru");
+            System.out.println("Введен почтовый адрес: " + BLUE + " martynov.averyan@yandex.ru" + RESET);
 
             driver.findElement(input_password).sendKeys("Qwerty!1");
-            System.out.println("Введен пароль: " + BLUE + " Qwerty!1");
+            System.out.println("Введен пароль: " + BLUE + " Qwerty!1" + RESET);
 
+            driver.findElement(btn_login).click();
+
+        } catch (Exception e) {
+            System.out.println(RED + "Страница не была открыта!" + RESET);
         }
         return new MainPageSI(driver);
     }
