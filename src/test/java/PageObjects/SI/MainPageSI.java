@@ -15,6 +15,14 @@ public class MainPageSI {
 
     public final String si_mainPage = "https://software.informer.com/";
 
+    /*
+          Блок для хранения состояний
+                                        */
+    // Для теста №2 Авторизация - хранится состояние username
+    // MainPageSI > ProfilePage
+    public static String t2_smoke_username;
+
+
 
         /*
                   Блок локаторов
@@ -62,9 +70,10 @@ public class MainPageSI {
 
     // Тест №2 Авторизация
     // Имеется тестовый аккаунт >>> email - martynov.averyan@yandex.ru = password - Qwerty!1
-    // MainPageSI > LoginPage  > MainPageSI
+    // MainPageSI > LoginPage  > MainPageSI > ProfilePage
 
     public LoginPage authorization() {
+        driver.get(si_mainPage);
         driver.findElement(btn_goToLogInPage).click();
         return new LoginPage(driver);
     }
@@ -72,17 +81,16 @@ public class MainPageSI {
     public ProfilePage checkAuthorization() {
         try {
             driver.findElement(btn_openProfileMenu).click();
-            String username = driver.findElement(profileUsername).getText();
-            if (username != null) {
-                System.out.println("Найден username: " + BLUE + username + RESET);
+            t2_smoke_username = driver.findElement(profileUsername).getText();
+            if (t2_smoke_username != null) {
+                System.out.println("Найден username: " + BLUE + t2_smoke_username + RESET);
                 driver.findElement(profileUsername).click();
-                return new ProfilePage(driver);
             }
         } catch (Exception e) {
             System.out.println(RED + "Username или ProfileMenu не были обнаружены! Авторизация провалилась" + RESET);
         }
+        return new ProfilePage(driver);
     }
-
 
 
 

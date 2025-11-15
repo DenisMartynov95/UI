@@ -4,6 +4,7 @@ import org.hamcrest.MatcherAssert;
 import org.testng.annotations.Test;
 
 import static Expected.SmokeTests.t1_registrationAccount.EXPECTED_USERNAME;
+import static PageObjects.SI.MainPageSI.t2_smoke_username;
 
 public class TestClass extends LaunchBrowsers {
 
@@ -14,8 +15,20 @@ public class TestClass extends LaunchBrowsers {
                 .registrationAccount()
                 .registrationAccount()
                 .checkAccount()
-                        .checkUsername();
+                        .t1_checkUsername();
         MatcherAssert.assertThat(EXPECTED_USERNAME,checkUsername);
+
+    }
+
+
+    @Test
+    public void smoke_authorization() {
+        boolean checkUsername = new MainPageSI(driver)
+                .authorization()
+                .authorization()
+                .checkAuthorization()
+                        .t2_checkUsername();
+        MatcherAssert.assertThat(t2_smoke_username, checkUsername);
 
     }
 
