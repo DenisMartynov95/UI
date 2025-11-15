@@ -76,11 +76,13 @@ public class LoginPage {
             driver.findElement(input_password).sendKeys("Qwerty!1");
             System.out.println("Введен пароль: " + BLUE + " Qwerty!1" + RESET);
 
-            driver.findElement(btn_login).click();
-
         } catch (Exception e) {
-            System.out.println(RED + "Страница не была открыта!" + RESET);
+            System.out.println(PURPLE + "Страница не была открыта!" + RESET);
         }
+
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.elementToBeClickable(btn_login));
+        driver.findElement(btn_login).click();
         return new MainPageSI(driver);
     }
 }

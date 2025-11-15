@@ -72,7 +72,7 @@ public class MainPageSI {
     // Имеется тестовый аккаунт >>> email - martynov.averyan@yandex.ru = password - Qwerty!1
     // MainPageSI > LoginPage  > MainPageSI > ProfilePage
 
-    public LoginPage authorization() {
+    public LoginPage goToLoginPage() {
         driver.get(si_mainPage);
         driver.findElement(btn_goToLogInPage).click();
         return new LoginPage(driver);
@@ -82,12 +82,13 @@ public class MainPageSI {
         try {
             driver.findElement(btn_openProfileMenu).click();
             t2_smoke_username = driver.findElement(profileUsername).getText();
+            System.out.println("Найдено username: " + BLUE + t2_smoke_username + RESET + " занесено в переменную t2_smoke_username");
             if (t2_smoke_username != null) {
                 System.out.println("Найден username: " + BLUE + t2_smoke_username + RESET);
                 driver.findElement(profileUsername).click();
             }
         } catch (Exception e) {
-            System.out.println(RED + "Username или ProfileMenu не были обнаружены! Авторизация провалилась" + RESET);
+            System.out.println(PURPLE + "Тест упал, либо не была открыта страница, либо не найден username" + RESET);
         }
         return new ProfilePage(driver);
     }

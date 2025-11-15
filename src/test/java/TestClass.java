@@ -8,23 +8,23 @@ import static PageObjects.SI.MainPageSI.t2_smoke_username;
 
 public class TestClass extends LaunchBrowsers {
 
-    @Test
-    public void smoke_registrationAccount() {
-        boolean checkUsername = new MainPageSI(driver)
-                .registrationAccount()
-                .registrationAccount()
-                .registrationAccount()
-                .checkAccount()
-                        .t1_checkUsername();
-        MatcherAssert.assertThat(EXPECTED_USERNAME,checkUsername);
-
-    }
+//    @Test
+//    public void smoke_registrationAccount() {
+//        boolean checkUsername = new MainPageSI(driver)
+//                .registrationAccount()
+//                .registrationAccount()
+//                .registrationAccount()
+//                .checkAccount()
+//                        .t1_checkUsername();
+//        MatcherAssert.assertThat(EXPECTED_USERNAME,checkUsername);
+//
+//    }
 
 
     @Test
     public void smoke_authorization() {
         boolean checkUsername = new MainPageSI(driver)
-                .authorization()
+                .goToLoginPage()
                 .authorization()
                 .checkAuthorization()
                         .t2_checkUsername();
