@@ -85,4 +85,12 @@ public class LoginPage {
         driver.findElement(btn_login).click();
         return new MainPageSI(driver);
     }
+
+
+    // Тест №3 Разлогин
+    // MainPageSI > LoginPage  > MainPageSI > ProfilePage > ===LoginPage===
+    public boolean
+
+
+
 }

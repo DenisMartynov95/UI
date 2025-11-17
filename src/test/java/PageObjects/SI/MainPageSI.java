@@ -104,9 +104,4 @@ public class MainPageSI {
         return new ProfilePage(driver);
     }
 
-    // Тест №3 Разлогин
-    // MainPageSI > LoginPage  > MainPageSI > ProfilePage > ===MainPage===
-
-
-
 }

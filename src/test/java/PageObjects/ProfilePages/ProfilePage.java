@@ -12,6 +12,7 @@ import java.time.Duration;
 
 import static Expected.SmokeTests.t1_registrationAccount.EXPECTED_USERNAME;
 import static Other.ColorfulConsole.PURPLE;
+import static Other.ColorfulConsole.RESET;
 import static PageObjects.SI.MainPageSI.t2_smoke_username;
 
 public class ProfilePage {
@@ -32,8 +33,9 @@ public class ProfilePage {
                   Блок Кнопочек
                                       */
     private final By btn_profileMenu = By.xpath(".//div/a[@class = 'login_user']/img");
-    private final By btn_logOut = By.xpath("");
-
+    private final By btn_logOut = By.xpath(".//div/a[@class = 'a_logout']");
+    // Кнопка доступна после выхода из УЗ
+    private final By btn_goToLogIn = By.xpath(".//div[@class = 'auth-wrap']/a[@class = 'login_btn']");
             /*
                 Блок методов
                                      */
@@ -52,18 +54,27 @@ public class ProfilePage {
     }
 
     // Тест №3 Разлогин
-    // MainPageSI > LoginPage  > MainPageSI > ===ProfilePage=== > MainPage
-    public MainPageSI logOut() {
+    // MainPageSI > LoginPage  > MainPageSI > ===ProfilePage=== > LoginPage
+    public LoginPage logOut() {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.elementToBeClickable(btn_profileMenu));
 
         } catch (Exception e) {
-            System.out.println(PURPLE + " Не была найдена кнопка открывания меню профиля!");
+            System.out.println(PURPLE + " Не была найдена кнопка открывания меню профиля!" +RESET);
         }
         driver.findElement(btn_profileMenu).click();
         driver.findElement(btn_logOut).click();
-        return new MainPageSI(driver);
+        // Разлогинились, теперь ищем подтверждение этому
+        try {
+            WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+            wait.until(ExpectedConditions.elementToBeClickable(btn_goToLogIn));
+        } catch (Exception e) {
+            System.out.println(PURPLE + " Не была найдена кнопка для перехода на страницу Логина - РАЗЛОГИН НЕ ПРОШЕЛ!" +RESET);
+        }
+
+        driver.findElement(btn_goToLogIn).click();
+        return new LoginPage(driver);
     }
 
 
