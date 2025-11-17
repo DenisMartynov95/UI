@@ -39,20 +39,20 @@ public class ProfilePage {
                                      */
 
     // Тест №1 Регистрация и авторизация e2e
-    // MainPageSI > LoginPage > SignUpPage > MainPageSI > ProfilePage
+    // MainPageSI > LoginPage > SignUpPage > MainPageSI > ===ProfilePage===
     public boolean t1_checkUsername () {
         return driver.findElement(username).getText().contains(EXPECTED_USERNAME);
     }
 
 
     // Тест №2 Авторизация
-    // MainPageSI > LoginPage  > MainPageSI > ProfilePage
+    // MainPageSI > LoginPage  > MainPageSI > ===ProfilePage===
     public boolean t2_checkUsername () {
         return driver.findElement(username).getText().contains(t2_smoke_username);
     }
 
     // Тест №3 Разлогин
-    // MainPageSI > LoginPage  > MainPageSI > ProfilePage > MainPage
+    // MainPageSI > LoginPage  > MainPageSI > ===ProfilePage=== > MainPage
     public MainPageSI logOut() {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));

@@ -43,14 +43,16 @@ public class MainPageSI {
                 Блок методов
                                      */
 
-    // Тест №1 Регистрация и авторизация e2e (Начало)
-    // MainPageSI > LoginPage > SignUpPage > MainPageSI > ProfilePage
+    // Тест №1 Регистрация и авторизация e2e
+    // ===MainPageSI=== > LoginPage > SignUpPage > MainPageSI > ProfilePage
     public LoginPage registrationAccount() {
         driver.get(si_mainPage);
         driver.findElement(btn_goToLogInPage).click();
         return new LoginPage(driver);
     }
 
+    // Тест №1 Регистрация и авторизация e2e
+    // MainPageSI > LoginPage > SignUpPage > ===MainPageSI=== > ProfilePage
     public ProfilePage checkAccount() {
         driver.findElement(btn_openProfileMenu).click();
 
@@ -68,21 +70,22 @@ public class MainPageSI {
         // Далее прохожу по тесту на новую страницу
         driver.findElement(btn_openProfileMenu).click();
         return new  ProfilePage(driver);
-
     }
 
 
-    // Тест №2 Авторизация (Начало)
+    // Тест №2 Авторизация
     // Имеется тестовый аккаунт >>> email - martynov.averyan@yandex.ru = password - Qwerty!1
-    // MainPageSI > LoginPage  > MainPageSI > ProfilePage
-    // Тест №3 Разлогин (Начало)
-    // =MainPageSI= > LoginPage  > MainPageSI > ProfilePage > MainPage
+    // ===MainPageSI=== > LoginPage  > MainPageSI > ProfilePage
+    // Тест №3 Разлогин
+    // ===MainPageSI=== > LoginPage  > MainPageSI > ProfilePage > MainPage
     public LoginPage goToLoginPage() {
         driver.get(si_mainPage);
         driver.findElement(btn_goToLogInPage).click();
         return new LoginPage(driver);
     }
 
+    // Тест №2 Авторизация
+    // MainPageSI > LoginPage  > ===MainPageSI=== > ProfilePage
     public ProfilePage checkAuthorization() {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -101,8 +104,8 @@ public class MainPageSI {
         return new ProfilePage(driver);
     }
 
-    // Тест №3 Разлогин (Концовка)
-    // MainPageSI > LoginPage  > MainPageSI > ProfilePage > =MainPage=
+    // Тест №3 Разлогин
+    // MainPageSI > LoginPage  > MainPageSI > ProfilePage > ===MainPage===
 
 
 
