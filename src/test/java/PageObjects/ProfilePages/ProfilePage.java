@@ -1,11 +1,17 @@
 package PageObjects.ProfilePages;
 
+import PageObjects.SI.MainPageSI;
 import org.openqa.selenium.WebDriver;
 import PageObjects.LoginPages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static Expected.SmokeTests.t1_registrationAccount.EXPECTED_USERNAME;
+import static Other.ColorfulConsole.PURPLE;
 import static PageObjects.SI.MainPageSI.t2_smoke_username;
 
 public class ProfilePage {
@@ -23,6 +29,12 @@ public class ProfilePage {
 
 
             /*
+                  Блок Кнопочек
+                                      */
+    private final By btn_profileMenu = By.xpath(".//div/a[@class = 'login_user']/img");
+    private final By btn_logOut = By.xpath("");
+
+            /*
                 Блок методов
                                      */
 
@@ -37,6 +49,21 @@ public class ProfilePage {
     // MainPageSI > LoginPage  > MainPageSI > ProfilePage
     public boolean t2_checkUsername () {
         return driver.findElement(username).getText().contains(t2_smoke_username);
+    }
+
+    // Тест №3 Разлогин
+    // MainPageSI > LoginPage  > MainPageSI > ProfilePage > MainPage
+    public MainPageSI logOut() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.elementToBeClickable(btn_profileMenu));
+
+        } catch (Exception e) {
+            System.out.println(PURPLE + " Не была найдена кнопка открывания меню профиля!");
+        }
+        driver.findElement(btn_profileMenu).click();
+        driver.findElement(btn_logOut).click();
+        return new MainPageSI(driver);
     }
 
 

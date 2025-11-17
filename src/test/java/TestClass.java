@@ -23,16 +23,26 @@ public class TestClass extends LaunchBrowsers {
 //    }
 
 
+//    @Test
+//    public void smoke_authorization() {
+//        boolean checkUsername = new MainPageSI(driver)
+//                .goToLoginPage()
+//                .authorization()
+//                .checkAuthorization()
+//                        .t2_checkUsername();
+//        MatcherAssert.assertThat(t2_smoke_username, checkUsername);
+//        System.out.println(GREEN + "Смоук-тест №2 прошел успешно!");
+//    }
+
     @Test
-    public void smoke_authorization() {
+    public void smoke_logOut() {
         boolean checkUsername = new MainPageSI(driver)
                 .goToLoginPage()
                 .authorization()
                 .checkAuthorization()
-                        .t2_checkUsername();
-        MatcherAssert.assertThat(t2_smoke_username, checkUsername);
-        System.out.println(GREEN + "Смоук-тест №2 прошел успешно!");
-    }
+                .logOut()
 
+
+    }
 
 }

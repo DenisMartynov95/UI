@@ -43,7 +43,7 @@ public class MainPageSI {
                 Блок методов
                                      */
 
-    // Тест №1 Регистрация и авторизация e2e
+    // Тест №1 Регистрация и авторизация e2e (Начало)
     // MainPageSI > LoginPage > SignUpPage > MainPageSI > ProfilePage
     public LoginPage registrationAccount() {
         driver.get(si_mainPage);
@@ -72,10 +72,11 @@ public class MainPageSI {
     }
 
 
-    // Тест №2 Авторизация
+    // Тест №2 Авторизация (Начало)
     // Имеется тестовый аккаунт >>> email - martynov.averyan@yandex.ru = password - Qwerty!1
     // MainPageSI > LoginPage  > MainPageSI > ProfilePage
-
+    // Тест №3 Разлогин (Начало)
+    // =MainPageSI= > LoginPage  > MainPageSI > ProfilePage > MainPage
     public LoginPage goToLoginPage() {
         driver.get(si_mainPage);
         driver.findElement(btn_goToLogInPage).click();
@@ -99,6 +100,9 @@ public class MainPageSI {
         }
         return new ProfilePage(driver);
     }
+
+    // Тест №3 Разлогин (Концовка)
+    // MainPageSI > LoginPage  > MainPageSI > ProfilePage > =MainPage=
 
 
 
