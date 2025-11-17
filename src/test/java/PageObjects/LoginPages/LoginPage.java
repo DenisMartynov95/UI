@@ -55,7 +55,7 @@ public class LoginPage {
 
 
     // Тест №1 Регистрация (продолжение - корень в MainPAgeSI)
-    // MainPageSI > LoginPage  >
+    // MainPageSI > LoginPage  > SignUpPage
 
     public SignUpPage registrationAccount() {
         // Сначала дождусь открытия страницы для этого сверюсь с локатором
@@ -67,7 +67,8 @@ public class LoginPage {
         }
 
 
-
+    // Тест №2 Авторизация (продолжение - корень в MainPAgeSI)
+    // MainPageSI > LoginPage  > MainPAgeSI
     public MainPageSI authorization() {
         try {
             driver.findElement(input_email).sendKeys("martynov.averyan@yandex.ru");

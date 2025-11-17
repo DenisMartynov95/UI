@@ -4,6 +4,7 @@ import org.hamcrest.MatcherAssert;
 import org.testng.annotations.Test;
 
 import static Expected.SmokeTests.t1_registrationAccount.EXPECTED_USERNAME;
+import static Other.ColorfulConsole.GREEN;
 import static PageObjects.SI.MainPageSI.t2_smoke_username;
 
 public class TestClass extends LaunchBrowsers {
@@ -17,6 +18,7 @@ public class TestClass extends LaunchBrowsers {
 //                .checkAccount()
 //                        .t1_checkUsername();
 //        MatcherAssert.assertThat(EXPECTED_USERNAME,checkUsername);
+//          System.out.println(GREEN + "Смоук-тест №1 прошел успешно!");
 //
 //    }
 
@@ -29,7 +31,7 @@ public class TestClass extends LaunchBrowsers {
                 .checkAuthorization()
                         .t2_checkUsername();
         MatcherAssert.assertThat(t2_smoke_username, checkUsername);
-
+        System.out.println(GREEN + "Смоук-тест №2 прошел успешно!");
     }
 
 

@@ -4,6 +4,10 @@ import PageObjects.LoginPages.LoginPage;
 import PageObjects.ProfilePages.ProfilePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static DataGeneration.SmokeTests.t1_RegistrationAccount.*;
 import static Other.ColorfulConsole.*;
@@ -80,11 +84,14 @@ public class MainPageSI {
 
     public ProfilePage checkAuthorization() {
         try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.elementToBeClickable(btn_openProfileMenu));
+
             driver.findElement(btn_openProfileMenu).click();
             t2_smoke_username = driver.findElement(profileUsername).getText();
             System.out.println("Найдено username: " + BLUE + t2_smoke_username + RESET + " занесено в переменную t2_smoke_username");
             if (t2_smoke_username != null) {
-                System.out.println("Найден username: " + BLUE + t2_smoke_username + RESET);
+                System.out.println(YELLOW + "Перехожу в профиль для окончательной сверки  Username " + RESET);
                 driver.findElement(profileUsername).click();
             }
         } catch (Exception e) {
