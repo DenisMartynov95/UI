@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import static Expected.SmokeTests.t1_registrationAccount.EXPECTED_USERNAME;
 import static Other.ColorfulConsole.GREEN;
+import static Other.ColorfulConsole.RESET;
 import static PageObjects.SI.MainPageSI.t2_smoke_username;
 
 public class TestClass extends LaunchBrowsers {
@@ -18,7 +19,7 @@ public class TestClass extends LaunchBrowsers {
 //                .checkAccount()
 //                        .t1_checkUsername();
 //        MatcherAssert.assertThat(EXPECTED_USERNAME,checkUsername);
-//          System.out.println(GREEN + "Смоук-тест №1 прошел успешно!");
+//          System.out.println(GREEN + "Смоук-тест №1 прошел успешно!"+RESET);
 //
 //    }
 
@@ -31,18 +32,18 @@ public class TestClass extends LaunchBrowsers {
 //                .checkAuthorization()
 //                        .t2_checkUsername();
 //        MatcherAssert.assertThat(t2_smoke_username, checkUsername);
-//        System.out.println(GREEN + "Смоук-тест №2 прошел успешно!");
+//        System.out.println(GREEN + "Смоук-тест №2 прошел успешно!" +RESET);
 //    }
 
     @Test
     public void smoke_logOut() {
-        boolean checkUsername = new MainPageSI(driver)
+        new MainPageSI(driver)
                 .goToLoginPage()
                 .authorization()
                 .checkAuthorization()
                 .logOut()
-
-
+                .checkLogInPageHeader();
+        System.out.println(GREEN + "Смоук-тест №3 прошел успешно! Разлогин осуществлен" +RESET);
     }
 
 }

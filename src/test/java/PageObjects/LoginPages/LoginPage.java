@@ -89,7 +89,15 @@ public class LoginPage {
 
     // Тест №3 Разлогин
     // MainPageSI > LoginPage  > MainPageSI > ProfilePage > ===LoginPage===
-    public boolean
+    public boolean checkLogInPageHeader() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(assert_LogInHeader));
+        } catch (Exception e) {
+            System.out.println(PURPLE + "Тест №3 упал! Страница не была открыта, либо ожидание недостаточно!" + RESET);
+        }
+        return driver.findElement(assert_LogInHeader).getText().contains("Log in");
+    }
 
 
 

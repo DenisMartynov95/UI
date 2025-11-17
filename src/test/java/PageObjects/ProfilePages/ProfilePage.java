@@ -11,8 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static Expected.SmokeTests.t1_registrationAccount.EXPECTED_USERNAME;
-import static Other.ColorfulConsole.PURPLE;
-import static Other.ColorfulConsole.RESET;
+import static Other.ColorfulConsole.*;
 import static PageObjects.SI.MainPageSI.t2_smoke_username;
 
 public class ProfilePage {
@@ -59,12 +58,14 @@ public class ProfilePage {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.elementToBeClickable(btn_profileMenu));
-
         } catch (Exception e) {
             System.out.println(PURPLE + " Не была найдена кнопка открывания меню профиля!" +RESET);
         }
+
         driver.findElement(btn_profileMenu).click();
+        System.out.println(YELLOW + "Разлогиниваюсь!" +RESET);
         driver.findElement(btn_logOut).click();
+
         // Разлогинились, теперь ищем подтверждение этому
         try {
             WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
@@ -73,6 +74,7 @@ public class ProfilePage {
             System.out.println(PURPLE + " Не была найдена кнопка для перехода на страницу Логина - РАЗЛОГИН НЕ ПРОШЕЛ!" +RESET);
         }
 
+        System.out.println(YELLOW + "Перехожу на страницу Log In" +RESET);
         driver.findElement(btn_goToLogIn).click();
         return new LoginPage(driver);
     }
