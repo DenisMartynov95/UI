@@ -21,11 +21,9 @@ public class LoginPage {
 
 
 
-        /*
+    /*
             Блок локаторов
                                      */
-
-
     // Для ассерта проверки открывшейся страницы
     private final By assert_LogInHeader = By.xpath("/html/body/div[1]/div[1]/div/h1");
     // Для ассерта, при открытии формы авторизации - анимация лоадера, надо дождаться display : none

@@ -35,15 +35,20 @@ public class TestClass extends LaunchBrowsers {
 //        System.out.println(GREEN + "Смоук-тест №2 прошел успешно!" +RESET);
 //    }
 
+//    @Test
+//    public void smoke_logOut() {
+//        new MainPageSI(driver)
+//                .goToLoginPage()
+//                .authorization()
+//                .checkAuthorization()
+//                .logOut()
+//                .checkLogInPageHeader();
+//        System.out.println(GREEN + "Смоук-тест №3 прошел успешно! Разлогин осуществлен" +RESET);
+//    }
+
     @Test
-    public void smoke_logOut() {
-        new MainPageSI(driver)
-                .goToLoginPage()
-                .authorization()
-                .checkAuthorization()
-                .logOut()
-                .checkLogInPageHeader();
-        System.out.println(GREEN + "Смоук-тест №3 прошел успешно! Разлогин осуществлен" +RESET);
+    public void smoke_checkMainPageSwitch() {
+
     }
 
 }

@@ -21,23 +21,22 @@ public class ProfilePage {
     public ProfilePage(WebDriver driver) { this.driver = driver; }
 
 
-            /*
+    /*
                   Блок локаторов
-                                      */
+                                                 */
 
     private final By username = By.xpath("/html/body/div[@class = 'wrapper-content']/div/div[@class = 'profile_head']/div[@class = 'main_user_info']/h1");
 
-
-            /*
-                  Блок Кнопочек
-                                      */
+    // Кнопочки
     private final By btn_profileMenu = By.xpath(".//div/a[@class = 'login_user']/img");
     private final By btn_logOut = By.xpath(".//div/a[@class = 'a_logout']");
     // Кнопка доступна после выхода из УЗ
     private final By btn_goToLogIn = By.xpath(".//div[@class = 'auth-wrap']/a[@class = 'login_btn']");
-            /*
+
+
+    /*
                 Блок методов
-                                     */
+                                               */
 
     // Тест №1 Регистрация и авторизация e2e
     // MainPageSI > LoginPage > SignUpPage > MainPageSI > ===ProfilePage===
