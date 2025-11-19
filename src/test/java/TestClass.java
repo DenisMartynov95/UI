@@ -1,3 +1,4 @@
+import Expected.SmokeTests.t4_checkMainPageSwitch;
 import PageObjects.SI.MainPageSI;
 import WebSettings.LaunchBrowsers;
 import org.hamcrest.MatcherAssert;
@@ -48,10 +49,11 @@ public class TestClass extends LaunchBrowsers {
 
     @Test
     public void smoke_checkMainPageSwitch() {
-        new MainPageSI(driver)
+        boolean checkMainPageSwitch = new MainPageSI(driver)
                 .goToMIPage()
                 .checkMiPageIsOpen()
                 .checkSiPageIsOpen();
+        MatcherAssert.assertThat(t4_checkMainPageSwitch.EXPECTED_SI_PAGE_NAME,checkMainPageSwitch);
 
     }
 

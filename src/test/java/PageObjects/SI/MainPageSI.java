@@ -1,5 +1,6 @@
 package PageObjects.SI;
 
+import Expected.SmokeTests.t4_checkMainPageSwitch;
 import PageObjects.LoginPages.LoginPage;
 import PageObjects.MI.MainPageMI;
 import PageObjects.ProfilePages.ProfilePage;
@@ -119,7 +120,7 @@ public class MainPageSI {
 
     // Тест №4 Проверка переключения между главными страницами
     // Имеется возможность перейти между страницами двумя способами - кнопками в рабочем поле страницы и кнопками из шапки страницы
-    // Вначале проверяю кнопки в рабочем поле > потом в шапке
+    // Вначале проверяю кнопки в рабочем поле
     // ===MainPageSI=== > MainPageMI  > MainPageSI
     public MainPageMI goToMIPage() {
         try {
@@ -137,7 +138,7 @@ public class MainPageSI {
     // Тест №4 Проверка переключения между главными страницами
     // MainPageSI > MainPageMI  > ===MainPageSI===
     public boolean checkSiPageIsOpen () {
-
+        return driver.findElement(assert_SIPage).getAttribute("alt").contains(t4_checkMainPageSwitch.EXPECTED_SI_PAGE_NAME);
     }
 
 }
