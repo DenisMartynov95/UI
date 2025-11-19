@@ -50,7 +50,8 @@ public class TestClass extends LaunchBrowsers {
     public void smoke_checkMainPageSwitch() {
         new MainPageSI(driver)
                 .goToMIPage()
-                .checkMiPageIsOpen();
+                .checkMiPageIsOpen()
+                .checkSiPageIsOpen();
 
     }
 

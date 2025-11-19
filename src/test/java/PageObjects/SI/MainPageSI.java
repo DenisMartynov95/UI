@@ -28,10 +28,18 @@ public class MainPageSI {
     public static String t2_smoke_username;
 
 
+    /*
+                  Блок ассертов
+                                           */
+    // Для ассерта проверки открывшейся страницы
+    private final By assert_SIPage = By.xpath("/html/body/header/div[1]/div/a/img");
 
-        /*
+
+
+    /*
                   Блок локаторов
-                                      */
+                                              */
+
 
     private final By profileUsername = By.xpath("/html/body/header/div[1]/div/div[4]/div[3]/div/div/a[@class = 'user_name']");
 
@@ -108,6 +116,7 @@ public class MainPageSI {
         return new ProfilePage(driver);
     }
 
+
     // Тест №4 Проверка переключения между главными страницами
     // Имеется возможность перейти между страницами двумя способами - кнопками в рабочем поле страницы и кнопками из шапки страницы
     // Вначале проверяю кнопки в рабочем поле > потом в шапке
@@ -124,5 +133,11 @@ public class MainPageSI {
         return new MainPageMI(driver);
     }
 
+
+    // Тест №4 Проверка переключения между главными страницами
+    // MainPageSI > MainPageMI  > ===MainPageSI===
+    public boolean checkSiPageIsOpen () {
+
+    }
 
 }

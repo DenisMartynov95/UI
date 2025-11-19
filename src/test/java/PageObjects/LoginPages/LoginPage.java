@@ -19,17 +19,19 @@ public class LoginPage {
     }
 
 
-
-
     /*
-            Блок локаторов
-                                     */
+                  Блок ассертов
+                                                 */
     // Для ассерта проверки открывшейся страницы
     private final By assert_LogInHeader = By.xpath("/html/body/div[1]/div[1]/div/h1");
     // Для ассерта, при открытии формы авторизации - анимация лоадера, надо дождаться display : none
     private final By assert_loaderAnimation = By.xpath("/html/body/div[1]/div[1]/img");
 
 
+
+    /*
+                 Блок локаторов
+                                                   */
 
     // Инпуты
     private final By input_email = By.id("si-mail");
