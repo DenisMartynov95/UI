@@ -30,8 +30,8 @@ public class ProfilePage {
     // Кнопочки
     private final By btn_profileMenu = By.xpath(".//div/a[@class = 'login_user']/img");
     private final By btn_logOut = By.xpath(".//div/a[@class = 'a_logout']");
-    // Кнопка доступна после выхода из УЗ
-    private final By btn_goToLogIn = By.xpath(".//div[@class = 'auth-wrap']/a[@class = 'login_btn']");
+    private final By btn_goToLogIn = By.xpath(".//div[@class = 'auth-wrap']/a[@class = 'login_btn']");     // Кнопка доступна после выхода из УЗ
+
 
 
     /*
