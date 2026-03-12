@@ -17,7 +17,10 @@ import static Other.ColorfulConsole.*;
 public class MainPageSI {
 
     private final WebDriver driver;
-    public MainPageSI(WebDriver driver) { this.driver = driver; }
+
+    public MainPageSI(WebDriver driver) {
+        this.driver = driver;
+    }
 
     public final String si_URL = "https://software.informer.com/";
 
@@ -51,9 +54,9 @@ public class MainPageSI {
     private final By btn_openMIPage = By.xpath(".//aside/div[@class = 'rotation_block desc']/div/a[@class = 'navigation__item']");
 
 
-        /*
-                Блок методов
-                                     */
+    /*
+            Блок методов
+                                 */
     // Тест №1 Регистрация и авторизация e2e
     // ===MainPageSI=== > LoginPage > SignUpPage > MainPageSI > ProfilePage
     public LoginPage registrationAccount() {
@@ -75,12 +78,12 @@ public class MainPageSI {
             }
 
         } catch (Exception e) {
-            System.out.println(RED +"Промежуточный ожидаемый результат ПРОВАЛИЛСЯ!" + RESET);
+            System.out.println(RED + "Промежуточный ожидаемый результат ПРОВАЛИЛСЯ!" + RESET);
         }
 
         // Далее прохожу по тесту на новую страницу
         driver.findElement(btn_openProfileMenu).click();
-        return new  ProfilePage(driver);
+        return new ProfilePage(driver);
     }
 
 
@@ -124,6 +127,7 @@ public class MainPageSI {
     // ===MainPageSI=== > MainPageMI  > MainPageSI
     public MainPageMI goToMIPage() {
         try {
+            driver.get(si_URL);
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.elementToBeClickable(btn_openMIPage));
 
@@ -137,8 +141,9 @@ public class MainPageSI {
 
     // Тест №4 Проверка переключения между главными страницами
     // MainPageSI > MainPageMI  > ===MainPageSI===
-    public boolean checkSiPageIsOpen () {
+    public boolean checkSiPageIsOpen() {
         return driver.findElement(assert_SIPage).getAttribute("alt").contains(t4_checkMainPageSwitch.EXPECTED_SI_PAGE_NAME);
     }
+
 
 }
