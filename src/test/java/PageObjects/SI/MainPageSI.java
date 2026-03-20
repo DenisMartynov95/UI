@@ -7,6 +7,7 @@ import PageObjects.ProfilePages.ProfilePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -16,13 +17,22 @@ import static Other.ColorfulConsole.*;
 
 public class MainPageSI {
 
-    private final WebDriver driver;
+    private WebDriver driver;
 
     public MainPageSI(WebDriver driver) {
         this.driver = driver;
     }
 
-    public final String si_URL = "https://software.informer.com/";
+
+    /*
+        Блок общих настроек для страницы Main Page SI
+                                                             */
+    public final String si_URL = "https://software.informer.com/";     // Страница для mainPage Software Informer
+
+    private Wait<WebDriver> webDriverWait() {  // Общую настройку для ожидания вывел в метод, чтобы в каждом методе не определять ожидание
+        return new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
+
 
     /*
           Блок для хранения состояний
@@ -37,10 +47,13 @@ public class MainPageSI {
                                            */
     // Для ассерта проверки открывшейся страницы
     private final By assert_SIPage = By.xpath("/html/body/header/div[1]/div/a/img");
-    // Для ассерта проверка какой баннер был открыт (баннер №1)
-    private final By assert_firstSI_banner = By.xpath("//div[@class=\"swiper-container swiper-container-fade swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events\"]//*[starts-with(text(), 'A simple way')][1]");
-    // Для ассерта проверка какой баннер был открыт (баннер №2)
-    private final By assert_secondSI_banner = By.xpath("/html/body/header/div[1]/div/a/img");
+
+    // Для ассерта проверка какой баннер был открыт (баннер №1) отталкиваюсь от радиокнопки, которая показывает какой баннер включен
+    // Параметр bullet-active проставляется у обеих кнопок, надо дополнительно смотреть на aria-label
+    private final By assert_firstSI_banner = By.xpath("//span[@class='swiper-pagination-bullet swiper-pagination-bullet-active' and @aria-label='Go to slide 1']");
+    // Для ассерта проверка какой баннер был открыт (баннер №2) отталкиваюсь от радиокнопки, которая показывает какой баннер включен
+    // Параметр bullet-active проставляется у обеих кнопок, надо дополнительно смотреть на aria-label
+    private final By assert_secondSI_banner = By.xpath("//span[@class='swiper-pagination-bullet swiper-pagination-bullet-active' and @aria-label='Go to slide 2']");
 
 
 
@@ -56,6 +69,8 @@ public class MainPageSI {
     private final By btn_goToLogInPage = By.xpath("/html/body/header/div[1]/div/div[4]/div[3]/a");
     private final By btn_openProfileMenu = By.xpath(".//div[1]/div/div[4]/div[3]/div/a[1]/img");
     private final By btn_openMIPage = By.xpath(".//aside/div[@class = 'rotation_block desc']/div/a[@class = 'navigation__item']");
+    private final By btn_firstBanner = By.xpath("//span[@class='swiper-pagination-bullet' and @aria-label='Go to slide 1']");
+    private final By btn_secondBanner = By.xpath("//span[@class='swiper-pagination-bullet' and @aria-label='Go to slide 2']");
 
 
     /*
@@ -151,6 +166,14 @@ public class MainPageSI {
 
     // Тест №5 Работа кнопок по смене баннеров на страницах Win | MAC
     // ===MainPageSI=== > MainPageMI
+    public MainPageSI() {
+        try {
+            driver.get(si_URL);
+            webDriverWait().until(ExpectedConditions.elementToBeClickable(btn_firstBanner));
 
+        } catch (Exception e) {
+            System.out.println(PURPLE + "Тест упал, кнопка баннера не найдена" + RESET);
+        }
+    }
 
 }
