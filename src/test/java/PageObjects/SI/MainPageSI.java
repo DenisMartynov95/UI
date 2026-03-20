@@ -37,6 +37,10 @@ public class MainPageSI {
                                            */
     // Для ассерта проверки открывшейся страницы
     private final By assert_SIPage = By.xpath("/html/body/header/div[1]/div/a/img");
+    // Для ассерта проверка какой баннер был открыт (баннер №1)
+    private final By assert_firstSI_banner = By.xpath("//div[@class=\"swiper-container swiper-container-fade swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events\"]//*[starts-with(text(), 'A simple way')][1]");
+    // Для ассерта проверка какой баннер был открыт (баннер №2)
+    private final By assert_secondSI_banner = By.xpath("/html/body/header/div[1]/div/a/img");
 
 
 
