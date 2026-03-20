@@ -145,5 +145,8 @@ public class MainPageSI {
         return driver.findElement(assert_SIPage).getAttribute("alt").contains(t4_checkMainPageSwitch.EXPECTED_SI_PAGE_NAME);
     }
 
+    // Тест №5 Работа кнопок по смене баннеров на страницах Win | MAC
+    // ===MainPageSI=== > MainPageMI
+
 
 }

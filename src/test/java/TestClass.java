@@ -10,7 +10,7 @@ import static PageObjects.SI.MainPageSI.t2_smoke_username;
 
 public class TestClass extends LaunchBrowsers {
 
-//    @Test
+//    @Test(description = "#1 Регистрация аккаунта")
 //    public void smoke_registrationAccount() {
 //        boolean checkUsername = new MainPageSI(driver)
 //                .registrationAccount()
@@ -24,7 +24,7 @@ public class TestClass extends LaunchBrowsers {
 //    }
 
 
-//    @Test
+//    @Test(description = "#2 Авторизация аккаунта")
 //    public void smoke_authorization() {
 //        boolean checkUsername = new MainPageSI(driver)
 //                .goToLoginPage()
@@ -35,7 +35,7 @@ public class TestClass extends LaunchBrowsers {
 //        System.out.println(GREEN + "Смоук-тест №2 прошел успешно!" +RESET);
 //    }
 
-//    @Test
+//    @Test(description = "#3 Выход из аккаунта")
 //    public void smoke_logOut() {
 //        new MainPageSI(driver)
 //                .goToLoginPage()
@@ -46,20 +46,25 @@ public class TestClass extends LaunchBrowsers {
 //        System.out.println(GREEN + "Смоук-тест №3 прошел успешно! Разлогин осуществлен" +RESET);
 //    }
 
-    @Test
-    public boolean smoke_checkMainPageSwitch() {
-        boolean checkMainPageSwitch = new MainPageSI(driver)
-                .goToMIPage()
-                .checkMiPageIsOpen()
-                .checkSiPageIsOpen();
-        try {
-            MatcherAssert.assertThat(t4_checkMainPageSwitch.EXPECTED_SI_PAGE_NAME,checkMainPageSwitch);
-            System.out.println(GREEN + "Страница Win Informer успешно открыта!" + RESET);
-            return true;
-        }catch (Exception e){
-            System.out.println(PURPLE + "Страница Win Informer не была открыта!" + RESET);
-            return false;
-        }
+//    @Test(description = "#4 Проверка смены основной страницы")
+//    public boolean smoke_checkMainPageSwitch() {
+//        boolean checkMainPageSwitch = new MainPageSI(driver)
+//                .goToMIPage()
+//                .checkMiPageIsOpen()
+//                .checkSiPageIsOpen();
+//        try {
+//            MatcherAssert.assertThat(t4_checkMainPageSwitch.EXPECTED_SI_PAGE_NAME,checkMainPageSwitch);
+//            System.out.println(GREEN + "Страница Win Informer успешно открыта!" + RESET);
+//            return true;
+//        }catch (Exception e){
+//            System.out.println(PURPLE + "Страница Win Informer не была открыта!" + RESET);
+//            return false;
+//        }
+//    }
+
+    @Test(description = "#5 Работа кнопок по смене баннеров на страницах Win | MAC")
+    public boolean smoke_efficiencyBannersBtn() {
+
     }
 
 
