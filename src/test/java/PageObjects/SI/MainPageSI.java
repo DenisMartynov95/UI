@@ -170,10 +170,23 @@ public class MainPageSI {
         try {
             driver.get(si_URL);
             webDriverWait().until(ExpectedConditions.elementToBeClickable(btn_firstBanner));
-
         } catch (Exception e) {
             System.out.println(PURPLE + "Тест упал, кнопка баннера не найдена" + RESET);
         }
+
+        driver.findElement(btn_secondBanner).click();
+        if (driver.findElement(assert_secondSI_banner).isDisplayed()) {
+            System.out.println(YELLOW + "Баннер переключился на №2 " + RESET);
+        } else {
+            System.out.println(PURPLE + "Тест упал, баннер не был переключен на №2" + RESET);
+        }
+        driver.findElement(btn_firstBanner).click();
+        if (driver.findElement(assert_firstSI_banner).isDisplayed()) {
+            System.out.println(YELLOW + "Баннер переключился на №1 " + RESET);
+        } else {
+            System.out.println(PURPLE + "Тест упал, баннер не был переключен на №1" + RESET);
+        }
+
     }
 
 }
