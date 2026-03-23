@@ -166,7 +166,8 @@ public class MainPageSI {
 
     // Тест №5 Работа кнопок по смене баннеров на страницах Win | MAC
     // ===MainPageSI=== > MainPageMI
-    public MainPageSI() {
+    public MainPageMI checkSIBanners() {
+        boolean flag = false; // Внедряю флаг, когда он переключится на true - перейдет переход на страницу MI
         try {
             driver.get(si_URL);
             webDriverWait().until(ExpectedConditions.elementToBeClickable(btn_firstBanner));
@@ -183,9 +184,15 @@ public class MainPageSI {
         driver.findElement(btn_firstBanner).click();
         if (driver.findElement(assert_firstSI_banner).isDisplayed()) {
             System.out.println(YELLOW + "Баннер переключился на №1 " + RESET);
+
+            flag = true;
+            System.out.println(WHITE + "Перехожу на страницу MI для продолжения " + RESET);
+            return new MainPageMI(driver);
+
         } else {
             System.out.println(PURPLE + "Тест упал, баннер не был переключен на №1" + RESET);
         }
+
 
     }
 
