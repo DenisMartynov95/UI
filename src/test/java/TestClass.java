@@ -67,8 +67,6 @@ public class TestClass extends LaunchBrowsers {
          String checkBannersSwitch = new MainPageSI(driver)
                 .checkSIBanners()
                 .checkMIBanners();
-
-
         return checkBannersSwitch;
     }
 
