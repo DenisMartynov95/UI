@@ -64,6 +64,9 @@ public class TestClass extends LaunchBrowsers {
 
     @Test(description = "#5 Работа кнопок по смене баннеров на страницах Win | MAC")
     public boolean smoke_efficiencyBannersBtn() {
+        boolean checkBannersSwitch = new MainPageSI(driver)
+                .checkSIBanners()
+
 
     }
 
