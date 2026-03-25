@@ -4,6 +4,7 @@ import Expected.SmokeTests.t4_checkMainPageSwitch;
 import PageObjects.LoginPages.LoginPage;
 import PageObjects.MI.MainPageMI;
 import PageObjects.ProfilePages.ProfilePage;
+import TestsData.t6_listsOfLocales;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,6 +12,8 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 import static DataGeneration.SmokeTests.t1_RegistrationAccount.*;
 import static Other.ColorfulConsole.*;
@@ -55,8 +58,6 @@ public class MainPageSI {
     // Параметр bullet-active проставляется у обеих кнопок, надо дополнительно смотреть на aria-label
     private final By assert_secondSI_banner = By.xpath("//span[@class='swiper-pagination-bullet swiper-pagination-bullet-active' and @aria-label='Go to slide 2']");
 
-
-
     /*
                   Блок локаторов
                                               */
@@ -71,6 +72,7 @@ public class MainPageSI {
     private final By btn_openMIPage = By.xpath(".//aside/div[@class = 'rotation_block desc']/div/a[@class = 'navigation__item']");
     private final By btn_firstBanner = By.xpath("//span[@class='swiper-pagination-bullet' and @aria-label='Go to slide 1']");
     private final By btn_secondBanner = By.xpath("//span[@class='swiper-pagination-bullet' and @aria-label='Go to slide 2']");
+    private final By btn_openListOfLocales = By.xpath("//div/div[@class='right']/div[@class='wrapper_lang wrapper_langs']");
 
 
     /*
@@ -191,5 +193,19 @@ public class MainPageSI {
         }
         return new MainPageMI(driver);
     }
+
+    // Тест №6 Доступность локалей для SI страницы
+    // ===MainPageSI=== > MainPageMI
+    public MainPageMI checkListOfLocales() {
+        driver.get(si_URL);
+        try {
+            driver.findElement(btn_openListOfLocales).click();
+            webDriverWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(t6_listsOfLocales.getListOfLocales));
+        }
+
+
+
+    }
+
 
 }
