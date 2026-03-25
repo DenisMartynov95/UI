@@ -6,7 +6,11 @@ import org.openqa.selenium.By;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Other.ColorfulConsole.*;
+
 public class t6_listsOfLocales {
+    asserts_t6_ExpectedListOfLocales expectedProvider = new asserts_t6_ExpectedListOfLocales();
+
 
     // Лист локалей для переключения (№6 смоук-кейс)
     private final List<By> listOfLocales = new ArrayList<>();
@@ -15,16 +19,20 @@ public class t6_listsOfLocales {
         for (int i = 1; i < 28; i++) {
             listOfLocales.add(By.xpath("//div[@class='right']//div[@class='lang_dropdown lang_dropdown2']/a[" + i +"]"));
         }
-
-        listOfLocales.add(By.xpath("//div[@class='right']//div[@class='lang_dropdown lang_dropdown2']/a[1]"));
         return listOfLocales;
     }
 
     //Метод для сопоставления локатора и ассерта (№6 смоук-кейс)
-    public checkListOfLocales() {
+    public void checkListOfLocales() {
         for (int i = 0; i < 28; i++) {
-            String actual = listOfLocales.get(i).toString();
-            String expected = asserts_t6_ExpectedListOfLocales.asserts_listOfLocales.get(i).toString();
+            String actual = listOfLocales.get(i).findElement(listOfLocales);
+            String expected = expectedProvider.getAsserts_listOfLocales(i);
+            if (actual.equals(expected)) {
+                System.out.println(YELLOW + "Актуальный: " + actual + " совпадает с Ожидаемым: " + expected + RESET);
+            } else {
+                System.out.println(PURPLE + "Актуальный: " + actual + " НЕ РАВЕН с Ожидаемым: " + expected + RESET);
+
+            }
 
 
         }

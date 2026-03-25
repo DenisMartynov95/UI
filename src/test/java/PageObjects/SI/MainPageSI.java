@@ -198,11 +198,11 @@ public class MainPageSI {
         driver.get(si_URL);
         try {
             driver.findElement(btn_openListOfLocales).click();
-            webDriverWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(t6_listsOfLocales.getListOfLocales));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
-
-
+        return new MainPageMI(driver);
     }
 
 

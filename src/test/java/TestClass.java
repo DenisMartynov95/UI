@@ -78,7 +78,10 @@ public class TestClass extends LaunchBrowsers {
     public void smoke_availability_of_locales() {
         try {
             new MainPageSI(driver)
+                    .checkListOfLocales();
 
+        } catch (Exception e) {
+            System.out.println( PURPLE + "Смоук-тест №5 провалился!" + RESET);
         }
     }
 

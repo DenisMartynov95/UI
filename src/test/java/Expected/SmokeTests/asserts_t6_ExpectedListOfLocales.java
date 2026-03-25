@@ -3,7 +3,7 @@ package Expected.SmokeTests;
 import java.util.ArrayList;
 
 public class asserts_t6_ExpectedListOfLocales {
-    ArrayList<String> asserts_listOfLocales = new ArrayList<>();
+    private final ArrayList<String> asserts_listOfLocales = new ArrayList<>();
 
     public ArrayList<String> getAsserts_listOfLocales() {
         asserts_listOfLocales.add("AR");
