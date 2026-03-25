@@ -4,7 +4,7 @@ import Expected.SmokeTests.t4_checkMainPageSwitch;
 import PageObjects.LoginPages.LoginPage;
 import PageObjects.MI.MainPageMI;
 import PageObjects.ProfilePages.ProfilePage;
-import TestsData.t6_listsOfLocales;
+import Parametrized.t6_listsOfLocales;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,8 +12,6 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
 
 import static DataGeneration.SmokeTests.t1_RegistrationAccount.*;
 import static Other.ColorfulConsole.*;

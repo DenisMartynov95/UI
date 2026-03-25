@@ -1,4 +1,4 @@
-package TestsData;
+package Parametrized;
 
 import org.openqa.selenium.By;
 
@@ -7,10 +7,14 @@ import java.util.List;
 
 public class t6_listsOfLocales {
 
-    // Лист ассертов для проверки доступности кнопок локализаций (№6 смоук-кейс)
-    private final List<String> listOfLocales = new ArrayList<>();
-    public List<By.ByXPath> getListOfLocales() {
-        listOfLocales.add("//div[@class='right']//div[@class='lang_dropdown lang_dropdown2']/a[1]");
+    // Лист локалей для переключения (№6 смоук-кейс)
+    private static final String XPATH_TEMPLATE = "//div[@class='right']//div[@class='lang_dropdown lang_dropdown2']/";
+
+    private final List<By> listOfLocales = new ArrayList<>();
+
+
+    public List<By> getListOfLocales() {
+        listOfLocales.add(By.xpath("//div[@class='right']//div[@class='lang_dropdown lang_dropdown2']/a[1]"));
         listOfLocales.add("//div[@class='right']//div[@class='lang_dropdown lang_dropdown2']/a[2]");
         listOfLocales.add("//div[@class='right']//div[@class='lang_dropdown lang_dropdown2']/a[3]");
         listOfLocales.add("//div[@class='right']//div[@class='lang_dropdown lang_dropdown2']/a[4]");
