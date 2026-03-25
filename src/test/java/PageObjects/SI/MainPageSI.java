@@ -1,6 +1,6 @@
 package PageObjects.SI;
 
-import Expected.SmokeTests.t4_checkMainPageSwitch;
+import Expected.SmokeTests.asserts_t4_checkMainPageSwitch;
 import PageObjects.LoginPages.LoginPage;
 import PageObjects.MI.MainPageMI;
 import PageObjects.ProfilePages.ProfilePage;
@@ -161,7 +161,7 @@ public class MainPageSI {
     // Тест №4 Проверка переключения между главными страницами
     // MainPageSI > MainPageMI  > ===MainPageSI===
     public boolean checkSiPageIsOpen() {
-        return driver.findElement(assert_SIPage).getAttribute("alt").contains(t4_checkMainPageSwitch.EXPECTED_SI_PAGE_NAME);
+        return driver.findElement(assert_SIPage).getAttribute("alt").contains(asserts_t4_checkMainPageSwitch.EXPECTED_SI_PAGE_NAME);
     }
 
     // Тест №5 Работа кнопок по смене баннеров на страницах Win | MAC

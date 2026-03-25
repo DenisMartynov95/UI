@@ -1,16 +1,14 @@
 package PageObjects.ProfilePages;
 
-import PageObjects.SI.MainPageSI;
 import org.openqa.selenium.WebDriver;
 import PageObjects.LoginPages.LoginPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static Expected.SmokeTests.t1_registrationAccount.EXPECTED_USERNAME;
+import static Expected.SmokeTests.asserts_t1_registrationAccount.EXPECTED_USERNAME;
 import static Other.ColorfulConsole.*;
 import static PageObjects.SI.MainPageSI.t2_smoke_username;
 

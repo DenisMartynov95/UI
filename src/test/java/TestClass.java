@@ -1,10 +1,10 @@
-import Expected.SmokeTests.t4_checkMainPageSwitch;
+import Expected.SmokeTests.asserts_t4_checkMainPageSwitch;
 import PageObjects.SI.MainPageSI;
 import WebSettings.LaunchBrowsers;
 import org.hamcrest.MatcherAssert;
 import org.testng.annotations.Test;
 
-import static Expected.SmokeTests.t1_registrationAccount.EXPECTED_USERNAME;
+import static Expected.SmokeTests.asserts_t1_registrationAccount.EXPECTED_USERNAME;
 import static Other.ColorfulConsole.*;
 import static PageObjects.SI.MainPageSI.t2_smoke_username;
 
@@ -53,7 +53,7 @@ public class TestClass extends LaunchBrowsers {
                 .checkMiPageIsOpen()
                 .checkSiPageIsOpen();
         try {
-            MatcherAssert.assertThat(t4_checkMainPageSwitch.EXPECTED_SI_PAGE_NAME,checkMainPageSwitch);
+            MatcherAssert.assertThat(asserts_t4_checkMainPageSwitch.EXPECTED_SI_PAGE_NAME,checkMainPageSwitch);
             System.out.println(GREEN + "Страница Win Informer успешно открыта!" + RESET);
             return true;
         }catch (Exception e){
