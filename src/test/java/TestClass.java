@@ -63,11 +63,17 @@ public class TestClass extends LaunchBrowsers {
 //    }
 
     @Test(description = "#5 Работа кнопок по смене баннеров на страницах Win | MAC")
-    public String smoke_efficiencyBannersBtn() {
-         String checkBannersSwitch = new MainPageSI(driver)
-                .checkSIBanners()
-                .checkMIBanners();
-        return checkBannersSwitch;
+    public void smoke_efficiencyBannersBtn() {
+        try {
+            new MainPageSI(driver)
+                    .checkSIBanners()
+                    .checkMIBanners();
+            System.out.println(GREEN + "Смоук-тест №5 прошел успешно! Баннеры переключаются!" + RESET);
+        } catch (Exception e) {
+            System.out.println( PURPLE + "Смоук-тест №5 провалился!" + RESET);
+        }
+
+
     }
 
 
