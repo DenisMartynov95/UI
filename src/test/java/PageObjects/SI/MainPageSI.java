@@ -4,7 +4,7 @@ import Expected.SmokeTests.asserts_t4_checkMainPageSwitch;
 import PageObjects.LoginPages.LoginPage;
 import PageObjects.MI.MainPageMI;
 import PageObjects.ProfilePages.ProfilePage;
-import Parametrized.t6_listsOfLocales;
+import Parametrized.SmokeTests.t6_smoke_availability_of_locales.t6_listsOfLocales;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -197,10 +197,15 @@ public class MainPageSI {
     public MainPageMI checkListOfLocales() {
         driver.get(si_URL);
         try {
-            t6_listsOfLocales methods = new t6_listsOfLocales(driver);
+            t6_listsOfLocales methods = new t6_listsOfLocales(driver); // Имплементирую внутренние методы класса, который содержит логику параметризированного теста
+
             driver.findElement(btn_openListOfLocales).click();
             methods.getListOfLocales();
             methods.checkListOfLocales();
+
+            System.out.println(GREEN + "Перехожу на страницу MI" + RESET);
+            driver.findElement(btn_openMIPage).click();
+
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

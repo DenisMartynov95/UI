@@ -1,9 +1,8 @@
-package Parametrized;
+package Parametrized.SmokeTests.t6_smoke_availability_of_locales;
 
 import Expected.SmokeTests.asserts_t6_ExpectedListOfLocales;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +21,7 @@ public class t6_listsOfLocales {
         this.driver = driver;
     }
 
-    // Так как у локаторов меняется всего лишь цифра, от 1 до 28 - делаю цикл
+    // Так как у локаторов меняется всего лишь цифра, от 1 до 28 - делаю цикл, который заполняет массив локаторов
     public List<By> getListOfLocales() {
         for (int i = 0; i != 28; i++) {
             listOfLocales.add(By.xpath("//div[@class='right']//div[@class='lang_dropdown lang_dropdown2']/a[" + (i+1) +"]"));
@@ -31,14 +30,14 @@ public class t6_listsOfLocales {
         return listOfLocales;
     }
 
-    //Метод для сопоставления локатора и ассерта (№6 смоук-кейс)
+    //Метод для сопоставления локатора и ассерта
     public void checkListOfLocales() {
 
         for (int i = 0; i != 28; i++) {
             By locator = listOfLocales.get(i);
-            String actual = driver.findElement(locator).getText();
+            String actual = driver.findElement(locator).getText(); //Беру локаторы которые в методе выше и впихиваю значение в actual
 
-            String expected = expectedList.getAsserts_listOfLocales().get(i);
+            String expected = expectedList.getAsserts_listOfLocales().get(i); //Беру локаторы из ассертового класса и вычленяю их текст
             if (actual.equals(expected)) {
                 System.out.println(YELLOW + "Актуальный: " + actual + " совпадает с Ожидаемым: " + expected + RESET);
             } else {
@@ -49,6 +48,8 @@ public class t6_listsOfLocales {
 
         }
     }
+
+
 
 
 }

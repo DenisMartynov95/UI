@@ -80,8 +80,10 @@ public class TestClass extends LaunchBrowsers {
             new MainPageSI(driver)
                     .checkListOfLocales();
 
+
+            System.out.println(GREEN + "Смоук-тест №6 прошел успешно! Все заявленные локализации имеются на страницах SI и MI" + RESET);
         } catch (Exception e) {
-            System.out.println( PURPLE + "Смоук-тест №5 провалился!" + RESET);
+            System.out.println( PURPLE + "Смоук-тест №6 провалился!" + RESET);
         }
     }
 
