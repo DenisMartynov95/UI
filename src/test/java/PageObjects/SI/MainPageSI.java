@@ -197,7 +197,11 @@ public class MainPageSI {
     public MainPageMI checkListOfLocales() {
         driver.get(si_URL);
         try {
+            t6_listsOfLocales methods = new t6_listsOfLocales(driver);
             driver.findElement(btn_openListOfLocales).click();
+            methods.getListOfLocales();
+            methods.checkListOfLocales();
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

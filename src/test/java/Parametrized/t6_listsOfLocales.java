@@ -24,16 +24,17 @@ public class t6_listsOfLocales {
 
     // Так как у локаторов меняется всего лишь цифра, от 1 до 28 - делаю цикл
     public List<By> getListOfLocales() {
-        for (int i = 0; i <= 27; i++) {
-            listOfLocales.add(By.xpath("//div[@class='right']//div[@class='lang_dropdown lang_dropdown2']/a[" + i +"]"));
+        for (int i = 0; i != 28; i++) {
+            listOfLocales.add(By.xpath("//div[@class='right']//div[@class='lang_dropdown lang_dropdown2']/a[" + (i+1) +"]"));
         }
+        System.out.println("Сформирован список локаторов локализаций: " + listOfLocales);
         return listOfLocales;
     }
 
     //Метод для сопоставления локатора и ассерта (№6 смоук-кейс)
     public void checkListOfLocales() {
 
-        for (int i = 0; i <= 27; i++) {
+        for (int i = 0; i != 28; i++) {
             By locator = listOfLocales.get(i);
             String actual = driver.findElement(locator).getText();
 
