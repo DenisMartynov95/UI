@@ -79,13 +79,17 @@ public class TestClass extends LaunchBrowsers {
         try {
             new MainPageSI(driver)
                     .checkListOfLocales();
-
-
             System.out.println(GREEN + "Смоук-тест №6 прошел успешно! Все заявленные локализации имеются на страницах SI и MI" + RESET);
         } catch (Exception e) {
             System.out.println( PURPLE + "Смоук-тест №6 провалился!" + RESET);
         }
     }
+
+    @Test(description = "#7 Проверка доступных категорий на странице SI")
+    public void smoke_availability_of_categories(){
+
+    }
+
 
 
 }

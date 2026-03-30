@@ -9,18 +9,17 @@ import java.util.List;
 
 import static Other.ColorfulConsole.*;
 
-public class t6_listsOfLocales {
+public class ListsOfLocales {
     asserts_t6_ExpectedListOfLocales expectedList = new asserts_t6_ExpectedListOfLocales();
 
     private final WebDriver driver;
 
-    // Лист локалей для переключения (№6 смоук-кейс)
-    private final List<By> listOfLocales = new ArrayList<>();
-
-    public t6_listsOfLocales(WebDriver driver) {
+    public ListsOfLocales(WebDriver driver) {
         this.driver = driver;
     }
 
+    // Логика получения локалей на странице SI
+    private final List<By> listOfLocales = new ArrayList<>();
     // Так как у локаторов меняется всего лишь цифра, от 1 до 28 - делаю цикл, который заполняет массив локаторов
     public List<By> getListOfLocales() {
         for (int i = 0; i != 28; i++) {

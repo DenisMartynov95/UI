@@ -4,7 +4,7 @@ import Expected.SmokeTests.asserts_t4_checkMainPageSwitch;
 import PageObjects.LoginPages.LoginPage;
 import PageObjects.MI.MainPageMI;
 import PageObjects.ProfilePages.ProfilePage;
-import Parametrized.SmokeTests.t6_smoke_availability_of_locales.t6_listsOfLocales;
+import Parametrized.SmokeTests.t6_smoke_availability_of_locales.ListsOfLocales;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -197,7 +197,7 @@ public class MainPageSI {
     public MainPageMI checkListOfLocales() {
         driver.get(si_URL);
         try {
-            t6_listsOfLocales methods = new t6_listsOfLocales(driver); // Имплементирую внутренние методы класса, который содержит логику параметризированного теста
+            ListsOfLocales methods = new ListsOfLocales(driver); // Имплементирую внутренние методы класса, который содержит логику параметризированного теста
 
             driver.findElement(btn_openListOfLocales).click();
             methods.getListOfLocales();
@@ -205,7 +205,10 @@ public class MainPageSI {
 
             System.out.println(GREEN + "Перехожу на страницу MI" + RESET);
             driver.findElement(btn_openMIPage).click();
-
+            // На странице MI не должно быть возможности сменить локаль! Поэтому
+            if (driver.findElement(btn_openListOfLocales).isDisplayed()) {
+                
+            }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -214,5 +217,17 @@ public class MainPageSI {
         return new MainPageMI(driver);
     }
 
+
+    // Тест №6 Доступность категорий для SI страницы
+    // ===MainPageSI===
+    public MainPageSI checkListOfCategories() {
+        driver.get(si_URL);
+        try {
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
 
 }
