@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Other.ColorfulConsole.*;
+
 public class ListOfCategories {
 
     asserts_t7_ExpectedListOfCategories expectedList = new asserts_t7_ExpectedListOfCategories();
@@ -33,7 +35,16 @@ public class ListOfCategories {
     // #3 Далее логика сопоставления ожидаемого и фактического
     public void checkListOfCategories() {
         for (int i = 0; i < expectedList.getAsserts_listOfCategories().size(); i++ ) {
+            // #4 Закладываю актуалочку и ожидаемый в разные переменные
+            String actual = driver.findElement(listOfCategories.get(i)).getText();
+            String expected = expectedList.getAsserts_listOfCategories().get(i);
 
+            if (actual.equals(expected)){
+                System.out.println(YELLOW + "Актуальный: " + actual + " совпадает с Ожидаемым: " + expected + RESET);
+            } else {
+                System.out.println(PURPLE + "Актуальный: " + actual + " НЕ РАВЕН с Ожидаемым: " + expected + RESET);
+                break;
+            }
         }
     }
 

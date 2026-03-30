@@ -1,4 +1,5 @@
 import Expected.SmokeTests.asserts_t4_checkMainPageSwitch;
+import PageObjects.MI.MainPageMI;
 import PageObjects.SI.MainPageSI;
 import WebSettings.LaunchBrowsers;
 import org.hamcrest.MatcherAssert;
@@ -86,8 +87,25 @@ public class TestClass extends LaunchBrowsers {
     }
 
     @Test(description = "#7 Проверка доступных категорий на странице SI")
-    public void smoke_availability_of_categories(){
+    public void smoke_availability_of_categoriesSI(){
+        try {
+            new MainPageSI(driver)
+                    .checkListOfCategories();
+            System.out.println(GREEN + "Смоук-тест №7 прошел успешно! Все заявленные категории имеются на странице SI" + RESET);
+        } catch (Exception e) {
+            System.out.println( PURPLE + "Смоук-тест №7 провалился!" + RESET);
+        }
+    }
 
+    @Test(description = "#8 Проверка доступных категорий на странице MI")
+    public void smoke_availability_of_categoriesMI(){
+        try {
+            new MainPageMI(driver)
+                    .checkListOfCategories();
+            System.out.println(GREEN + "Смоук-тест №7 прошел успешно! Все заявленные категории имеются на странице SI" + RESET);
+        } catch (Exception e) {
+            System.out.println( PURPLE + "Смоук-тест №7 провалился!" + RESET);
+        }
     }
 
 

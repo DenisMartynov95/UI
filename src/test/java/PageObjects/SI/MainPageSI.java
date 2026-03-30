@@ -5,6 +5,7 @@ import PageObjects.LoginPages.LoginPage;
 import PageObjects.MI.MainPageMI;
 import PageObjects.ProfilePages.ProfilePage;
 import Parametrized.SmokeTests.t6_smoke_availability_of_locales.ListsOfLocales;
+import Parametrized.SmokeTests.t7_smoke_availability_of_categories.ListOfCategories;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -220,9 +221,14 @@ public class MainPageSI {
 
     // Тест №6 Доступность категорий для SI страницы
     // ===MainPageSI===
-    public MainPageSI checkListOfCategories() {
+    public void checkListOfCategories() {
         driver.get(si_URL);
         try {
+            // #5 Импорт логики из класса LisOfCategories
+            ListOfCategories methods = new ListOfCategories(driver);
+
+            methods.getListOfCategories();
+            methods.checkListOfCategories();
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
