@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import static Expected.SmokeTests.asserts_t1_registrationAccount.EXPECTED_USERNAME;
 import static Other.ColorfulConsole.*;
 import static PageObjects.SI.MainPageSI.t2_smoke_username;
+import static Parametrized.SmokeTests.t7_t8_smoke_availability_of_categories.ListOfCategories.listOfCategories_isEquals;
 
 public class TestClass extends LaunchBrowsers {
 
@@ -88,22 +89,23 @@ public class TestClass extends LaunchBrowsers {
 
     @Test(description = "#7 Проверка доступных категорий на странице SI")
     public void smoke_availability_of_categoriesSI(){
-        try {
             new MainPageSI(driver)
                     .checkListOfCategories();
-            System.out.println(GREEN + "Смоук-тест №7 прошел успешно! Все заявленные категории имеются на странице SI" + RESET);
-        } catch (Exception e) {
+            if (listOfCategories_isEquals) {
+                System.out.println(GREEN + "Смоук-тест №7 прошел успешно! Все заявленные категории имеются на странице SI" + RESET);
+            } else {
             System.out.println( PURPLE + "Смоук-тест №7 провалился!" + RESET);
         }
     }
 
     @Test(description = "#8 Проверка доступных категорий на странице MI")
     public void smoke_availability_of_categoriesMI(){
-        try {
             new MainPageMI(driver)
                     .checkListOfCategories();
-            System.out.println(GREEN + "Смоук-тест №7 прошел успешно! Все заявленные категории имеются на странице SI" + RESET);
-        } catch (Exception e) {
+            // Импортировал флаг, который результатирует каждое сравнение отдельно и в случае чего валит тест
+            if (listOfCategories_isEquals) {
+                System.out.println(GREEN + "Смоук-тест №7 прошел успешно! Все заявленные категории имеются на странице SI" + RESET);
+            } else {
             System.out.println( PURPLE + "Смоук-тест №7 провалился!" + RESET);
         }
     }

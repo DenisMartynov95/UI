@@ -2,7 +2,7 @@ package Expected.SmokeTests;
 
 import java.util.ArrayList;
 
-public class asserts_t7_ExpectedListOfCategories {
+public class asserts_t7_t8_ExpectedListOfCategories {
     private final ArrayList<String> asserts_listOfCategories = new ArrayList<>();
 
     public ArrayList<String> getAsserts_listOfCategories() {

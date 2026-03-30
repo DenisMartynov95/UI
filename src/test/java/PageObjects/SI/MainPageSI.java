@@ -5,7 +5,7 @@ import PageObjects.LoginPages.LoginPage;
 import PageObjects.MI.MainPageMI;
 import PageObjects.ProfilePages.ProfilePage;
 import Parametrized.SmokeTests.t6_smoke_availability_of_locales.ListsOfLocales;
-import Parametrized.SmokeTests.t7_smoke_availability_of_categories.ListOfCategories;
+import Parametrized.SmokeTests.t7_t8_smoke_availability_of_categories.ListOfCategories;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;

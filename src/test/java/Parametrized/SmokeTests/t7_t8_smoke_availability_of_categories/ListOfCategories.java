@@ -1,6 +1,6 @@
-package Parametrized.SmokeTests.t7_smoke_availability_of_categories;
+package Parametrized.SmokeTests.t7_t8_smoke_availability_of_categories;
 
-import Expected.SmokeTests.asserts_t7_ExpectedListOfCategories;
+import Expected.SmokeTests.asserts_t7_t8_ExpectedListOfCategories;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -11,7 +11,9 @@ import static Other.ColorfulConsole.*;
 
 public class ListOfCategories {
 
-    asserts_t7_ExpectedListOfCategories expectedList = new asserts_t7_ExpectedListOfCategories();
+    asserts_t7_t8_ExpectedListOfCategories expectedList = new asserts_t7_t8_ExpectedListOfCategories();
+    // #5 Добавил флаг, чтобы передать его в самом конце теста, если какое-либо сопоставление не пройдет, то выведется корректный отчет
+    public static boolean listOfCategories_isEquals = true;
 
     private final WebDriver driver;
     public ListOfCategories(WebDriver driver) {
@@ -40,9 +42,11 @@ public class ListOfCategories {
             String expected = expectedList.getAsserts_listOfCategories().get(i);
 
             if (actual.equals(expected)){
+                listOfCategories_isEquals = true;
                 System.out.println(YELLOW + "Актуальный: " + actual + " совпадает с Ожидаемым: " + expected + RESET);
             } else {
                 System.out.println(PURPLE + "Актуальный: " + actual + " НЕ РАВЕН с Ожидаемым: " + expected + RESET);
+                listOfCategories_isEquals = false;
                 break;
             }
         }
