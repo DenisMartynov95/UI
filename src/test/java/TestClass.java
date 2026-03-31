@@ -110,6 +110,12 @@ public class TestClass extends LaunchBrowsers {
         }
     }
 
+    @Test(description = "#9 Проверка отображения программ в рекламных блоках")
+public void smoke_display_ADVProgSI() {
+        new MainPageSI(driver)
+
+
+    }
 
 
 }

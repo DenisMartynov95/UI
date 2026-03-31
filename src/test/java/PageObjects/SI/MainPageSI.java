@@ -236,4 +236,13 @@ public class MainPageSI {
 
     }
 
+    // Тест №9 Проверка отображения рекламных баннеров в блоке Must-have programs for Windows
+    // ===MainPageSI===
+    public void checkADVProgSI() {
+        driver.get(si_URL);
+
+
+    }
+
+
 }
