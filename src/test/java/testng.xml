@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Smoke Suite" verbose="1" parallel="false">
-
+<suite name="Smoke Suite" parallel="tests" thread-count="2">
     <parameter name="browser" value="CHROME"/>
     <parameter name="headless" value="false"/>
-    <parameter name="remote" value="false"/>
-    <parameter name="gridUrl" value="http://localhost:4444/wd/hub"/>
+    <parameter name="gridUrl" value="http://localhost:4444"/>
 
-    <test name="Smoke Tests">
+    <!-- Настройка отвечающая за включение удаленного запуска тестов не забудь здесь - менять ключ, если нужен локальный прогон -->
+    <parameter name="remote" value="true"/>
+
+
+    <test name="Smoke Tests (Chrome)">
+        <parameter name="browser" value="CHROME"/>
         <classes>
             <class name="TestClass"/>
         </classes>
     </test>
+
+    <test name="Firefox Tests">
+        <parameter name="browser" value="FIREFOX"/>
+        <classes>
+            <class name="TestClass"/>
+        </classes>
+    </test>
+
+
 
 </suite>
