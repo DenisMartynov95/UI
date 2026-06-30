@@ -6,6 +6,7 @@ import PageObjects.MI.MainPageMI;
 import PageObjects.ProfilePages.ProfilePage;
 import Parametrized.SmokeTests.t6_smoke_availability_of_locales.ListsOfLocales;
 import Parametrized.SmokeTests.t7_t8_smoke_availability_of_categories.ListOfCategories;
+import Parametrized.SmokeTests.t9_smoke_availability_of_mustHaveProgSI.ListOfADVProgSI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -63,7 +64,7 @@ public class MainPageSI {
 
 
     private final By profileUsername = By.xpath("/html/body/header/div[1]/div/div[4]/div[3]/div/div/a[@class = 'user_name']");
-
+    private final By must_have_block = By.xpath(".//div[1]/h1[@class = 'headline' and contains(text(), 'Must-have ')]");
 
     // Кнопочки
     private final By btn_goToLogInPage = By.xpath("/html/body/header/div[1]/div/div[4]/div[3]/a");
@@ -240,6 +241,22 @@ public class MainPageSI {
     // ===MainPageSI===
     public void checkADVProgSI() {
         driver.get(si_URL);
+
+        try {
+            if (webDriverWait().until(ExpectedConditions.textToBePresentInElementLocated(must_have_block,"Must-have programs for Windows"))) {
+                System.out.println(YELLOW + "Блок с маст-хэв программами был найден" + RESET);
+            }
+        } catch (Exception e) {
+            System.out.println(RED + "Блок с маст-хэв программами не был найден!" + RESET);
+        }
+
+        try {
+            ListOfADVProgSI methods = new ListOfADVProgSI(driver);
+            methods.fillListOfMustHaveProgSI();
+            methods.checkListOfMustHave();
+        } catch (Exception e) {
+            System.out.println(RED + "Тест №9 Упал!" + RESET);
+        }
 
 
     }

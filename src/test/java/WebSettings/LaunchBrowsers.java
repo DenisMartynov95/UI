@@ -10,7 +10,7 @@ public class LaunchBrowsers {
     @BeforeMethod(alwaysRun = true)
     public void setUp(
             @Optional("CHROME") String browser,
-            @Optional("false") String headless,
+            @Optional("true") String headless,
             @Optional("false") String remote,
             @Optional("http://localhost:4444/wd/hub") String gridUrl
     ) {

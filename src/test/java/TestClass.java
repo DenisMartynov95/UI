@@ -9,6 +9,7 @@ import static Expected.SmokeTests.asserts_t1_registrationAccount.EXPECTED_USERNA
 import static Other.ColorfulConsole.*;
 import static PageObjects.SI.MainPageSI.t2_smoke_username;
 import static Parametrized.SmokeTests.t7_t8_smoke_availability_of_categories.ListOfCategories.listOfCategories_isEquals;
+import static Parametrized.SmokeTests.t9_smoke_availability_of_mustHaveProgSI.ListOfADVProgSI.listOfADV_isEquals;
 
 public class TestClass extends LaunchBrowsers {
 
@@ -110,12 +111,18 @@ public class TestClass extends LaunchBrowsers {
         }
     }
 
-//    @Test(description = "#9 Проверка отображения программ в рекламных блоках")
-//public void smoke_display_ADVProgSI() {
-//        new MainPageSI(driver);
-//
-//
-//    }
+    @Test(description = "#9 Проверка отображения программ в рекламных блоках")
+public void smoke_display_ADVProgSI() {
+        new MainPageSI(driver)
+                .checkADVProgSI();
+        // Импортировал флаг, который результатирует каждое сравнение отдельно и в случае чего валит тест
+        if (listOfADV_isEquals) {
+            System.out.println(GREEN + "Смоук-тест №9 прошел успешно! Все заявленные маст хэв программы имеются на странице SI" + RESET);
+        } else {
+            System.out.println( PURPLE + "Смоук-тест №9 провалился!" + RESET);
+        }
+
+    }
 
 
 }
